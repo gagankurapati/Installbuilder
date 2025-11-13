@@ -1,0 +1,1073 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <!-- Basic Project Information -->
+    <shortName>${PROJECT_SHORT_NAME}</shortName>
+    <fullName>${PROJECT_FULL_NAME}</fullName>
+    <version>${PROJECT_VERSION}</version>
+    <installerFilename>${INSTALLER_FILENAME}</installerFilename>
+
+    <!-- Vendor Information -->
+    <vendor>${VENDOR_NAME}</vendor>
+    <summary>${PROJECT_SUMMARY}</summary>
+    <description>${PROJECT_DESCRIPTION}</description>
+
+    <!-- Installation Directory -->
+    <defaultInstallationDirectory>${DEFAULT_INSTALL_DIR}</defaultInstallationDirectory>
+
+    <!-- License Configuration -->
+    <licenseFile>${LICENSE_FILE}</licenseFile>
+
+    <!-- Readme/Documentation -->
+    <readmeFile>${README_FILE}</readmeFile>
+
+    <!-- Enable/Disable platforms -->
+    <enabledPlatforms>
+        <platform>${ENABLED_PLATFORMS}</platform>
+    </enabledPlatforms>
+
+    <!-- Component List -->
+    <componentList>
+        <!-- Main Application Component -->
+        <component>
+            <name>main</name>
+            <description>${MAIN_COMPONENT_DESCRIPTION}</description>
+            <canBeEdited>0</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <!-- Application Files -->
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfiles</name>
+                    <platforms>all</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>${SOURCE_DIR}/${PLATFORM_SPECIFIC_DIR}</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+
+                <!-- Windows Specific Files -->
+                <folder>
+                    <description>Windows Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>windowsfiles</name>
+                    <platforms>windows</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>${SOURCE_DIR}/windows</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+
+                <!-- Linux Specific Files -->
+                <folder>
+                    <description>Linux Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>linuxfiles</name>
+                    <platforms>linux linux-x64</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>${SOURCE_DIR}/linux</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+
+            <!-- Shortcuts -->
+            <shortcutList>
+                <!-- Windows Main Application Shortcut -->
+                <shortcut>
+                    <comment>Launch ${PROJECT_FULL_NAME}</comment>
+                    <exec>${installdir}/${WINDOWS_EXECUTABLE}</exec>
+                    <icon>${installdir}/${WINDOWS_ICON}</icon>
+                    <name>${PROJECT_SHORT_NAME}</name>
+                    <path>${installdir}</path>
+                    <platforms>windows</platforms>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/${WINDOWS_EXECUTABLE}</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+                    <windowsPath>${installdir}</windowsPath>
+                    <programGroupAllUsers>1</programGroupAllUsers>
+                    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+                    <windowsCreateDesktopIcon>1</windowsCreateDesktopIcon>
+                    <ruleList>
+                        <isTrue>
+                            <value>${CREATE_DESKTOP_SHORTCUTS}</value>
+                        </isTrue>
+                    </ruleList>
+                </shortcut>
+
+                <!-- Windows Documentation Shortcut -->
+                <shortcut>
+                    <comment>View ${PROJECT_FULL_NAME} Documentation</comment>
+                    <exec>${installdir}/docs/index.html</exec>
+                    <icon>${installdir}/${WINDOWS_ICON}</icon>
+                    <name>${PROJECT_SHORT_NAME} Documentation</name>
+                    <path>${installdir}/docs</path>
+                    <platforms>windows</platforms>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/docs/index.html</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+                    <windowsPath>${installdir}/docs</windowsPath>
+                    <programGroupAllUsers>1</programGroupAllUsers>
+                    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+                    <ruleList>
+                        <isTrue>
+                            <value>${CREATE_START_MENU_SHORTCUTS}</value>
+                        </isTrue>
+                        <componentTest>
+                            <logic>exists</logic>
+                            <name>documentation</name>
+                        </componentTest>
+                    </ruleList>
+                </shortcut>
+
+                <!-- Windows Uninstaller Shortcut -->
+                <shortcut>
+                    <comment>Uninstall ${PROJECT_FULL_NAME}</comment>
+                    <exec>${installdir}/${UNINSTALLER_NAME}.exe</exec>
+                    <icon>${installdir}/${WINDOWS_ICON}</icon>
+                    <name>Uninstall ${PROJECT_SHORT_NAME}</name>
+                    <path>${installdir}</path>
+                    <platforms>windows</platforms>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>${installdir}/${UNINSTALLER_NAME}.exe</windowsExec>
+                    <windowsExecArgs></windowsExecArgs>
+                    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+                    <windowsPath>${installdir}</windowsPath>
+                    <programGroupAllUsers>1</programGroupAllUsers>
+                    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+                    <ruleList>
+                        <isTrue>
+                            <value>${CREATE_START_MENU_SHORTCUTS}</value>
+                        </isTrue>
+                    </ruleList>
+                </shortcut>
+
+                <!-- Linux Main Application Shortcut -->
+                <shortcut>
+                    <comment>Launch ${PROJECT_FULL_NAME}</comment>
+                    <exec>${installdir}/${LINUX_EXECUTABLE}</exec>
+                    <icon>${installdir}/${LINUX_ICON}</icon>
+                    <name>${PROJECT_SHORT_NAME}</name>
+                    <path>${installdir}</path>
+                    <platforms>linux linux-x64</platforms>
+                    <runInTerminal>0</runInTerminal>
+                    <ruleList>
+                        <isTrue>
+                            <value>${CREATE_DESKTOP_SHORTCUTS}</value>
+                        </isTrue>
+                    </ruleList>
+                </shortcut>
+
+                <!-- Linux Documentation Shortcut -->
+                <shortcut>
+                    <comment>View ${PROJECT_FULL_NAME} Documentation</comment>
+                    <exec>xdg-open</exec>
+                    <icon>${installdir}/${LINUX_ICON}</icon>
+                    <name>${PROJECT_SHORT_NAME} Documentation</name>
+                    <path>${installdir}/docs</path>
+                    <platforms>linux linux-x64</platforms>
+                    <runInTerminal>0</runInTerminal>
+                    <unixExecArgs>${installdir}/docs/index.html</unixExecArgs>
+                    <ruleList>
+                        <isTrue>
+                            <value>${CREATE_DESKTOP_SHORTCUTS}</value>
+                        </isTrue>
+                        <componentTest>
+                            <logic>exists</logic>
+                            <name>documentation</name>
+                        </componentTest>
+                    </ruleList>
+                </shortcut>
+            </shortcutList>
+        </component>
+
+        <!-- Optional Documentation Component -->
+        <component>
+            <name>documentation</name>
+            <description>${DOCS_COMPONENT_DESCRIPTION}</description>
+            <canBeEdited>1</canBeEdited>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>Documentation Files</description>
+                    <destination>${installdir}/docs</destination>
+                    <name>docsfiles</name>
+                    <platforms>all</platforms>
+                    <distributionFileList>
+                        <distributionDirectory>
+                            <origin>${DOCS_DIR}</origin>
+                        </distributionDirectory>
+                    </distributionFileList>
+                </folder>
+            </folderList>
+        </component>
+    </componentList>
+
+    <!-- Post Installation Actions -->
+    <postInstallationActionList>
+        <!-- Windows specific post-install actions -->
+        <actionGroup>
+            <actionList>
+                <registrySet>
+                    <key>${REGISTRY_KEY}</key>
+                    <name>InstallPath</name>
+                    <value>${installdir}</value>
+                    <type>REG_SZ</type>
+                </registrySet>
+                <registrySet>
+                    <key>${REGISTRY_KEY}</key>
+                    <name>Version</name>
+                    <value>${PROJECT_VERSION}</value>
+                    <type>REG_SZ</type>
+                </registrySet>
+                <addDirectoryToPath>
+                    <insertAt>${ADD_TO_PATH_POSITION}</insertAt>
+                    <path>${installdir}/bin</path>
+                </addDirectoryToPath>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+
+        <!-- Linux specific post-install actions -->
+        <actionGroup>
+            <actionList>
+                <changePermissions>
+                    <files>${installdir}/${LINUX_EXECUTABLE}</files>
+                    <permissions>0755</permissions>
+                </changePermissions>
+                <runProgram>
+                    <program>ln</program>
+                    <programArguments>-sf ${installdir}/bin/${LINUX_EXECUTABLE} /usr/local/bin/${PROJECT_SHORT_NAME}</programArguments>
+                    <abortOnError>0</abortOnError>
+                    <showMessageOnError>0</showMessageOnError>
+                </runProgram>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+
+        <!-- Linux Aliases Installation -->
+        <actionGroup>
+            <actionList>
+                <substitute>
+                    <files>${system.home}/.bash_aliases</files>
+                    <type>regexp</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern># ${PROJECT_FULL_NAME} Aliases.*# End ${PROJECT_FULL_NAME} Aliases</pattern>
+                            <value></value>
+                        </substitution>
+                    </substitutionList>
+                </substitute>
+                <addTextToFile>
+                    <path>${system.home}/.bash_aliases</path>
+                    <text># ${PROJECT_FULL_NAME} Aliases - Installed on ${date}
+# Launch ${PROJECT_FULL_NAME}
+alias ${PROJECT_SHORT_NAME}='${installdir}/${LINUX_EXECUTABLE}'
+# Show ${PROJECT_FULL_NAME} help
+alias ${PROJECT_SHORT_NAME}-help='${installdir}/${LINUX_EXECUTABLE} --help'
+# Configure ${PROJECT_FULL_NAME}
+alias ${PROJECT_SHORT_NAME}-config='${installdir}/${LINUX_EXECUTABLE} --settings'
+# Navigate to ${PROJECT_FULL_NAME} installation directory
+alias cd-${PROJECT_SHORT_NAME}='cd ${installdir}'
+# End ${PROJECT_FULL_NAME} Aliases
+</text>
+                    <append>1</append>
+                </addTextToFile>
+                <showInfo>
+                    <text>Shell aliases have been added to ${system.home}/.bash_aliases
+
+To use the aliases immediately, run:
+    source ~/.bash_aliases
+
+Or restart your terminal.
+
+Available aliases:
+  ${PROJECT_SHORT_NAME}         - Launch the application
+  ${PROJECT_SHORT_NAME}-help    - Show help
+  ${PROJECT_SHORT_NAME}-config  - Open settings
+  cd-${PROJECT_SHORT_NAME}      - Go to install directory</text>
+                    <title>Linux Aliases Installed</title>
+                </showInfo>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+                <isTrue>
+                    <value>${INSTALL_LINUX_ALIASES}</value>
+                </isTrue>
+            </ruleList>
+        </actionGroup>
+    </postInstallationActionList>
+
+    <!-- Uninstaller Actions -->
+    <preUninstallationActionList>
+        <!-- Windows uninstall cleanup -->
+        <actionGroup>
+            <actionList>
+                <registryDelete>
+                    <key>${REGISTRY_KEY}</key>
+                </registryDelete>
+                <removeDirectoryFromPath>
+                    <path>${installdir}/bin</path>
+                </removeDirectoryFromPath>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+
+        <!-- Linux uninstall cleanup -->
+        <actionGroup>
+            <actionList>
+                <deleteFile>
+                    <path>/usr/local/bin/${PROJECT_SHORT_NAME}</path>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+    </preUninstallationActionList>
+
+    <!-- Parameter List for Installation Wizard -->
+    <parameterList>
+        <!-- Custom installation directory parameter -->
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installation Directory</description>
+            <explanation>Select the directory where ${PROJECT_FULL_NAME} will be installed</explanation>
+            <value>${DEFAULT_INSTALL_DIR}</value>
+            <default>${DEFAULT_INSTALL_DIR}</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>1</ask>
+            <cliOptionName>install-dir</cliOptionName>
+            <mustBeWritable>1</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>40</width>
+        </directoryParameter>
+
+        <!-- Add to PATH option (Windows) -->
+        <booleanParameter>
+            <name>add_to_path</name>
+            <description>Add to System PATH</description>
+            <explanation>Add ${PROJECT_SHORT_NAME} to the system PATH environment variable</explanation>
+            <value>${ADD_TO_PATH_DEFAULT}</value>
+            <default>${ADD_TO_PATH_DEFAULT}</default>
+            <ask>1</ask>
+            <ruleList>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </booleanParameter>
+
+        <!-- Create Desktop Shortcut option -->
+        <booleanParameter>
+            <name>create_desktop_shortcut</name>
+            <description>Create Desktop Shortcut</description>
+            <explanation>Create a shortcut on the desktop</explanation>
+            <value>${CREATE_DESKTOP_SHORTCUT_DEFAULT}</value>
+            <default>${CREATE_DESKTOP_SHORTCUT_DEFAULT}</default>
+            <ask>1</ask>
+        </booleanParameter>
+    </parameterList>
+
+    <!-- Platform Specific Settings -->
+    <platformSettings>
+        <!-- Windows Settings -->
+        <windows>
+            <allowWindowsDesktopShortcut>1</allowWindowsDesktopShortcut>
+            <createUninstaller>1</createUninstaller>
+            <uninstallerName>${UNINSTALLER_NAME}</uninstallerName>
+            <uninstallerIcon>${WINDOWS_ICON}</uninstallerIcon>
+            <uninstallDisplayName>${PROJECT_FULL_NAME}</uninstallDisplayName>
+            <uninstallDisplayIcon>${installdir}/${WINDOWS_ICON}</uninstallDisplayIcon>
+            <requestUninstallerElevation>1</requestUninstallerElevation>
+            <installElevationRequired>1</installElevationRequired>
+        </windows>
+
+        <!-- Linux Settings -->
+        <linux>
+            <allowComponentSelection>1</allowComponentSelection>
+        </linux>
+    </platformSettings>
+
+    <!-- Finalization Settings -->
+    <finalPageActionList>
+        <runProgram>
+            <program>${installdir}/${WINDOWS_EXECUTABLE}</program>
+            <programArguments></programArguments>
+            <ruleList>
+                <isTrue>
+                    <value>${launch_application}</value>
+                </isTrue>
+                <platformTest>
+                    <type>windows</type>
+                </platformTest>
+            </ruleList>
+        </runProgram>
+        <runProgram>
+            <program>${installdir}/${LINUX_EXECUTABLE}</program>
+            <programArguments></programArguments>
+            <ruleList>
+                <isTrue>
+                    <value>${launch_application}</value>
+                </isTrue>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </runProgram>
+    </finalPageActionList>
+
+    <!-- Additional Parameters -->
+    <compressionAlgorithm>lzma-ultra</compressionAlgorithm>
+    <enableRollback>1</enableRollback>
+    <enableTimestamp>1</enableTimestamp>
+    <saveRelativePaths>1</saveRelativePaths>
+    <allowLanguageSelection>1</allowLanguageSelection>
+    <languageList>
+        <language>en</language>
+    </languageList>
+
+    <!-- Splash Screen Configuration -->
+    <splashImage>${SPLASH_IMAGE}</splashImage>
+    <splashScreenShowProgressText>1</splashScreenShowProgressText>
+
+    <!-- Custom Page List -->
+    <customPageList>
+        <!-- Custom Welcome Page with System Information Button -->
+        <customWelcomePage>
+            <name>welcome</name>
+            <title>${PROJECT_FULL_NAME} Installation</title>
+            <description>Welcome to the ${PROJECT_FULL_NAME} Setup Wizard</description>
+            <explanation>This wizard will guide you through the installation of ${PROJECT_FULL_NAME}.
+
+Click "System Information" to view your system details, or click "Next" to continue with the installation.</explanation>
+            <buttonList>
+                <!-- System Information Button -->
+                <button>
+                    <title>System Information</title>
+                    <actionList>
+                        <!-- Gather System Information -->
+                        <getComputerName>
+                            <variable>system_model</variable>
+                        </getComputerName>
+                        <setInstallerVariable>
+                            <name>system_os</name>
+                            <value>${platform_name}</value>
+                        </setInstallerVariable>
+                        <runProgram>
+                            <program>wmic</program>
+                            <programArguments>cpu get name</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariableFromRegEx>
+                            <name>system_cpu</name>
+                            <pattern>^Name\s*(.+)$</pattern>
+                            <substitution>\1</substitution>
+                            <text>${program_stdout}</text>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariableFromRegEx>
+                        <runProgram>
+                            <program>wmic</program>
+                            <programArguments>computersystem get totalphysicalmemory</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariableFromRegEx>
+                            <name>system_ram_bytes</name>
+                            <pattern>^TotalPhysicalMemory\s*(\d+)$</pattern>
+                            <substitution>\1</substitution>
+                            <text>${program_stdout}</text>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariableFromRegEx>
+                        <mathExpression>
+                            <result>system_ram_gb</result>
+                            <expression>${system_ram_bytes} / 1073741824</expression>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </mathExpression>
+                        <runProgram>
+                            <program>wmic</program>
+                            <programArguments>path win32_videocontroller get name</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariableFromRegEx>
+                            <name>system_video</name>
+                            <pattern>^Name\s*(.+)$</pattern>
+                            <substitution>\1</substitution>
+                            <text>${program_stdout}</text>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariableFromRegEx>
+                        <runProgram>
+                            <program>wmic</program>
+                            <programArguments>path Win32_VideoController get CurrentHorizontalResolution,CurrentVerticalResolution</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariableFromRegEx>
+                            <name>system_screen</name>
+                            <pattern>(\d+)\s+(\d+)</pattern>
+                            <substitution>\1 x \2</substitution>
+                            <text>${program_stdout}</text>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariableFromRegEx>
+                        <setInstallerVariable>
+                            <name>user_admin</name>
+                            <value>No</value>
+                        </setInstallerVariable>
+                        <setInstallerVariable>
+                            <name>user_admin</name>
+                            <value>Yes</value>
+                            <ruleList>
+                                <isTrue>
+                                    <value>${installer_ui_mode}</value>
+                                </isTrue>
+                                <compareText>
+                                    <logic>equals</logic>
+                                    <text>${windows_user_account_type}</text>
+                                    <value>admin</value>
+                                </compareText>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <!-- Linux System Information -->
+                        <runProgram>
+                            <program>bash</program>
+                            <programArguments>-c "cat /sys/devices/virtual/dmi/id/product_name 2>/dev/null || echo 'Unknown'"</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariable>
+                            <name>system_model</name>
+                            <value>${program_stdout}</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <runProgram>
+                            <program>bash</program>
+                            <programArguments>-c "grep -m 1 'model name' /proc/cpuinfo | cut -d':' -f2 | xargs"</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariable>
+                            <name>system_cpu</name>
+                            <value>${program_stdout}</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <runProgram>
+                            <program>bash</program>
+                            <programArguments>-c "free -g | grep Mem | awk '{print $2}'"</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariable>
+                            <name>system_ram_gb</name>
+                            <value>${program_stdout}</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <runProgram>
+                            <program>bash</program>
+                            <programArguments>-c "lspci | grep -i vga | cut -d':' -f3 | xargs"</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariable>
+                            <name>system_video</name>
+                            <value>${program_stdout}</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <runProgram>
+                            <program>bash</program>
+                            <programArguments>-c "xrandr 2>/dev/null | grep '*' | awk '{print $1}' | head -1 || echo 'Unknown'"</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariable>
+                            <name>system_screen</name>
+                            <value>${program_stdout}</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <runProgram>
+                            <program>bash</program>
+                            <programArguments>-c "if groups | grep -q 'sudo\|wheel'; then echo 'Yes'; else echo 'No'; fi"</programArguments>
+                            <abortOnError>0</abortOnError>
+                            <showMessageOnError>0</showMessageOnError>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </runProgram>
+                        <setInstallerVariable>
+                            <name>user_admin</name>
+                            <value>${program_stdout}</value>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <!-- Display System Information -->
+                        <showInfo>
+                            <title>System Information</title>
+                            <text>Model: ${system_model}
+OS: ${system_os}
+CPU: ${system_cpu}
+RAM: ${system_ram_gb} GB
+VIDEO: ${system_video}
+SCREEN: ${system_screen}
+
+User Account Type: ${user_admin} admin privileges</text>
+                        </showInfo>
+                    </actionList>
+                </button>
+            </buttonList>
+        </customWelcomePage>
+
+        <!-- Custom License Agreement Page -->
+        <customLicensePage>
+            <name>license</name>
+            <title>License Agreement</title>
+            <description>End User License Agreement (EULA)</description>
+            <explanation>Please read the following license agreement carefully.</explanation>
+            <file>${LICENSE_FILE}</file>
+            <showFileChooser>0</showFileChooser>
+            <showAcceptRadioButton>1</showAcceptRadioButton>
+            <showDeclineRadioButton>1</showDeclineRadioButton>
+            <acceptButtonText>I accept the terms in the license agreement</acceptButtonText>
+            <declineButtonText>I do not accept the terms in the license agreement</declineButtonText>
+            <defaultAcceptValue>0</defaultAcceptValue>
+            <preShowPageActionList>
+                <!-- Set license_accepted to false by default -->
+                <setInstallerVariable>
+                    <name>license_accepted</name>
+                    <value>0</value>
+                </setInstallerVariable>
+            </preShowPageActionList>
+            <buttonList>
+                <!-- Print License Button -->
+                <button>
+                    <title>Print</title>
+                    <actionList>
+                        <!-- Windows Print Action -->
+                        <actionGroup>
+                            <actionList>
+                                <createTempFile>
+                                    <variable>temp_license_file</variable>
+                                    <extension>txt</extension>
+                                </createTempFile>
+                                <copyFile>
+                                    <destination>${temp_license_file}</destination>
+                                    <origin>${LICENSE_FILE}</origin>
+                                </copyFile>
+                                <runProgram>
+                                    <program>notepad</program>
+                                    <programArguments>/p "${temp_license_file}"</programArguments>
+                                    <abortOnError>0</abortOnError>
+                                    <showMessageOnError>0</showMessageOnError>
+                                </runProgram>
+                                <deleteFile>
+                                    <path>${temp_license_file}</path>
+                                </deleteFile>
+                            </actionList>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </actionGroup>
+                        <!-- Linux Print Action -->
+                        <actionGroup>
+                            <actionList>
+                                <runProgram>
+                                    <program>bash</program>
+                                    <programArguments>-c "if command -v lpr &gt; /dev/null; then lpr '${LICENSE_FILE}'; elif command -v lp &gt; /dev/null; then lp '${LICENSE_FILE}'; else xdg-open '${LICENSE_FILE}'; fi"</programArguments>
+                                    <abortOnError>0</abortOnError>
+                                    <showMessageOnError>0</showMessageOnError>
+                                </runProgram>
+                            </actionList>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </actionGroup>
+                    </actionList>
+                </button>
+            </buttonList>
+            <validationActionList>
+                <!-- Validation to ensure user accepts the license -->
+                <throwError>
+                    <text>You must accept the license agreement to continue with the installation.</text>
+                    <ruleList>
+                        <isFalse>
+                            <value>${license_accepted}</value>
+                        </isFalse>
+                    </ruleList>
+                </throwError>
+            </validationActionList>
+        </customLicensePage>
+
+        <!-- Software Privacy Notice Page -->
+        <customInfoPage>
+            <name>privacynotice</name>
+            <title>Software Privacy Notice</title>
+            <description>Privacy Notice</description>
+            <explanation>Please review the following privacy notice.</explanation>
+            <file>${PRIVACY_NOTICE_FILE}</file>
+            <showFileChooser>0</showFileChooser>
+        </customInfoPage>
+
+        <!-- Destination Folder Page -->
+        <folderSelectionPage>
+            <name>destinationfolder</name>
+            <title>Destination Folder</title>
+            <description>Choose Install Location</description>
+            <explanation>Setup will install ${PROJECT_FULL_NAME} in the following folder.
+
+To install in a different folder, click Change and select another folder. Click Next to continue.</explanation>
+            <destination>${installdir}</destination>
+            <allowEmptyValue>0</allowEmptyValue>
+            <mustBeWritable>1</mustBeWritable>
+            <mustExist>0</mustExist>
+            <buttonList>
+                <!-- Change Button -->
+                <button>
+                    <title>Change...</title>
+                    <actionList>
+                        <chooseDirectory>
+                            <title>Select Installation Folder</title>
+                            <explanation>Choose the folder where you want to install ${PROJECT_FULL_NAME}</explanation>
+                            <variable>installdir</variable>
+                            <default>${installdir}</default>
+                            <mustExist>0</mustExist>
+                            <mustBeWritable>1</mustBeWritable>
+                        </chooseDirectory>
+                    </actionList>
+                </button>
+            </buttonList>
+        </folderSelectionPage>
+
+        <!-- Custom Setup Page -->
+        <componentSelectionPage>
+            <name>customsetup</name>
+            <title>Custom Setup</title>
+            <description>Select Features</description>
+            <explanation>Select the features you want to install.
+
+Click on the icons in the tree below to change how features are installed.</explanation>
+            <showSizes>1</showSizes>
+            <allowEmptySelection>0</allowEmptySelection>
+            <showAdvancedOptions>0</showAdvancedOptions>
+            <componentListHelpText>Feature Description:
+
+${component_description}</componentListHelpText>
+            <preShowPageActionList>
+                <!-- Calculate disk space information -->
+                <setInstallerVariable>
+                    <name>install_drive</name>
+                    <value>${installdir}</value>
+                </setInstallerVariable>
+                <actionGroup>
+                    <actionList>
+                        <setInstallerVariableFromRegEx>
+                            <name>install_drive_letter</name>
+                            <pattern>^([A-Za-z]:).*</pattern>
+                            <substitution>\1</substitution>
+                            <text>${installdir}</text>
+                        </setInstallerVariableFromRegEx>
+                        <getDiskSpace>
+                            <path>${install_drive_letter}</path>
+                            <variable>disk_space_available</variable>
+                        </getDiskSpace>
+                        <mathExpression>
+                            <result>disk_space_available_mb</result>
+                            <expression>${disk_space_available} / 1048576</expression>
+                        </mathExpression>
+                    </actionList>
+                    <ruleList>
+                        <platformTest>
+                            <type>windows</type>
+                        </platformTest>
+                    </ruleList>
+                </actionGroup>
+                <actionGroup>
+                    <actionList>
+                        <getDiskSpace>
+                            <path>${installdir}</path>
+                            <variable>disk_space_available</variable>
+                        </getDiskSpace>
+                        <mathExpression>
+                            <result>disk_space_available_mb</result>
+                            <expression>${disk_space_available} / 1048576</expression>
+                        </mathExpression>
+                    </actionList>
+                    <ruleList>
+                        <platformTest>
+                            <type>linux</type>
+                        </platformTest>
+                    </ruleList>
+                </actionGroup>
+            </preShowPageActionList>
+            <buttonList>
+                <!-- Change Installation Location Button -->
+                <button>
+                    <title>Change...</title>
+                    <actionList>
+                        <chooseDirectory>
+                            <title>Select Installation Folder</title>
+                            <explanation>Choose the folder where you want to install ${PROJECT_FULL_NAME}</explanation>
+                            <variable>installdir</variable>
+                            <default>${installdir}</default>
+                            <mustExist>0</mustExist>
+                            <mustBeWritable>1</mustBeWritable>
+                        </chooseDirectory>
+                        <!-- Recalculate disk space after changing location -->
+                        <actionGroup>
+                            <actionList>
+                                <setInstallerVariableFromRegEx>
+                                    <name>install_drive_letter</name>
+                                    <pattern>^([A-Za-z]:).*</pattern>
+                                    <substitution>\1</substitution>
+                                    <text>${installdir}</text>
+                                </setInstallerVariableFromRegEx>
+                                <getDiskSpace>
+                                    <path>${install_drive_letter}</path>
+                                    <variable>disk_space_available</variable>
+                                </getDiskSpace>
+                                <mathExpression>
+                                    <result>disk_space_available_mb</result>
+                                    <expression>${disk_space_available} / 1048576</expression>
+                                </mathExpression>
+                            </actionList>
+                            <ruleList>
+                                <platformTest>
+                                    <type>windows</type>
+                                </platformTest>
+                            </ruleList>
+                        </actionGroup>
+                        <actionGroup>
+                            <actionList>
+                                <getDiskSpace>
+                                    <path>${installdir}</path>
+                                    <variable>disk_space_available</variable>
+                                </getDiskSpace>
+                                <mathExpression>
+                                    <result>disk_space_available_mb</result>
+                                    <expression>${disk_space_available} / 1048576</expression>
+                                </mathExpression>
+                            </actionList>
+                            <ruleList>
+                                <platformTest>
+                                    <type>linux</type>
+                                </platformTest>
+                            </ruleList>
+                        </actionGroup>
+                    </actionList>
+                </button>
+                <!-- Disk Space Button -->
+                <button>
+                    <title>Space</title>
+                    <actionList>
+                        <showInfo>
+                            <title>Disk Space Information</title>
+                            <text>Installation Location: ${installdir}
+
+Available Disk Space: ${disk_space_available_mb} MB
+
+Required Space for Selected Features: ${installation_size} MB</text>
+                        </showInfo>
+                    </actionList>
+                </button>
+                <!-- Help Button -->
+                <button>
+                    <title>Help</title>
+                    <actionList>
+                        <showInfo>
+                            <title>Custom Setup Help</title>
+                            <text>Custom Setup Help
+
+You can customize which features of ${PROJECT_FULL_NAME} to install.
+
+How to use this page:
+- Click on a component icon to select or deselect it
+- Selected components (checked) will be installed
+- Deselected components will not be installed
+- Component descriptions appear on the right when selected
+
+Install to: ${installdir}
+- Click "Change..." to modify the installation location
+
+Click "Space" to view available disk space information.
+
+Click "Next" to continue with the installation.</text>
+                        </showInfo>
+                    </actionList>
+                </button>
+            </buttonList>
+            <postShowPageActionList>
+                <!-- Display installation location below component tree -->
+                <setInstallerVariable>
+                    <name>custom_setup_footer</name>
+                    <value>Install to: ${installdir}</value>
+                </setInstallerVariable>
+            </postShowPageActionList>
+        </componentSelectionPage>
+
+        <!-- Ready to Install Page -->
+        <readyToInstallPage>
+            <name>readytoinstall</name>
+            <title>Ready to Install the Program</title>
+            <description>Ready to Install</description>
+            <explanation>The wizard is ready to begin installation.
+
+Click Next to begin the installation. If you want to review or change any settings, click Back.</explanation>
+            <showSummary>1</showSummary>
+            <summaryText>Setup Type: Custom
+
+Destination Location:
+${installdir}
+
+Selected Components:</summaryText>
+        </readyToInstallPage>
+
+        <!-- Installing Page -->
+        <installationPage>
+            <name>installing</name>
+            <title>Installing ${PROJECT_FULL_NAME}</title>
+            <description>Installation in Progress</description>
+            <explanation>Please wait while the Setup Wizard installs ${PROJECT_FULL_NAME}. This may take several minutes.</explanation>
+            <showProgressBar>1</showProgressBar>
+            <showProgressText>1</showProgressText>
+            <abortOnError>0</abortOnError>
+            <enableRollbackOnError>1</enableRollbackOnError>
+        </installationPage>
+
+        <!-- Installation Interrupted/Cancelled Page -->
+        <abortedInstallationPage>
+            <name>installationinterrupted</name>
+            <title>Installation Interrupted</title>
+            <description>Setup was interrupted</description>
+            <explanation>Setup was interrupted before ${PROJECT_FULL_NAME} could be completely installed.
+
+Your system has not been modified. To install this program at a later time, run Setup again.
+
+Click Finish to exit the Setup Wizard.</explanation>
+            <allowBack>0</allowBack>
+            <allowCancel>0</allowCancel>
+        </abortedInstallationPage>
+    </customPageList>
+
+    <!-- Enable Back Button Throughout Installation -->
+    <allowBackButton>1</allowBackButton>
+    <allowCancelDuringInstall>1</allowCancelDuringInstall>
+</project>
