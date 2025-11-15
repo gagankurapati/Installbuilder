@@ -1,0 +1,151 @@
+<!-- Product B Shortcuts -->
+
+<!-- Main Application Shortcut -->
+<shortcut>
+    <comment>Launch ${PROJECT_FULL_NAME}</comment>
+    <exec>${installdir}/bin/${WINDOWS_EXECUTABLE}</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME}</name>
+    <path>${installdir}</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/bin/${WINDOWS_EXECUTABLE}</windowsExec>
+    <windowsExecArgs></windowsExecArgs>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+    <windowsCreateDesktopIcon>1</windowsCreateDesktopIcon>
+</shortcut>
+
+<!-- Visualizer Shortcut (Product B specific) -->
+<shortcut>
+    <comment>Launch ${PROJECT_SHORT_NAME} Visualizer</comment>
+    <exec>${installdir}/visual/visualizer.exe</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME} Visualizer</name>
+    <path>${installdir}/visual</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/visual/visualizer.exe</windowsExec>
+    <windowsExecArgs></windowsExecArgs>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}/visual</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+    <ruleList>
+        <componentTest>
+            <logic>exists</logic>
+            <name>visual</name>
+        </componentTest>
+    </ruleList>
+</shortcut>
+
+<!-- Solver Shortcut -->
+<shortcut>
+    <comment>Run ${PROJECT_SHORT_NAME} Solver</comment>
+    <exec>${installdir}/solver/solver.exe</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME} Solver</name>
+    <path>${installdir}/solver</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/solver/solver.exe</windowsExec>
+    <windowsExecArgs></windowsExecArgs>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}/solver</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+    <ruleList>
+        <componentTest>
+            <logic>exists</logic>
+            <name>solver</name>
+        </componentTest>
+    </ruleList>
+</shortcut>
+
+<!-- Documentation Shortcut -->
+<shortcut>
+    <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+    <exec>${installdir}/documentation/index.html</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME} Documentation</name>
+    <path>${installdir}/documentation</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/documentation/index.html</windowsExec>
+    <windowsExecArgs></windowsExecArgs>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}/documentation</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+    <ruleList>
+        <componentTest>
+            <logic>exists</logic>
+            <name>documentation</name>
+        </componentTest>
+    </ruleList>
+</shortcut>
+
+<!-- Uninstaller Shortcut -->
+<shortcut>
+    <comment>Uninstall ${PROJECT_FULL_NAME}</comment>
+    <exec>${installdir}/${UNINSTALLER_NAME}.exe</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>Uninstall ${PROJECT_SHORT_NAME}</name>
+    <path>${installdir}</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/${UNINSTALLER_NAME}.exe</windowsExec>
+    <windowsExecArgs></windowsExecArgs>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+</shortcut>
+
+<!-- Linux Main Application Shortcut -->
+<shortcut>
+    <comment>Launch ${PROJECT_FULL_NAME}</comment>
+    <exec>${installdir}/bin/${LINUX_EXECUTABLE}</exec>
+    <icon>${installdir}/${LINUX_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME}</name>
+    <path>${installdir}</path>
+    <platforms>linux linux-x64</platforms>
+    <runInTerminal>0</runInTerminal>
+</shortcut>
+
+<!-- Linux Visualizer Shortcut -->
+<shortcut>
+    <comment>Launch ${PROJECT_SHORT_NAME} Visualizer</comment>
+    <exec>${installdir}/visual/visualizer</exec>
+    <icon>${installdir}/${LINUX_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME} Visualizer</name>
+    <path>${installdir}/visual</path>
+    <platforms>linux linux-x64</platforms>
+    <runInTerminal>0</runInTerminal>
+    <ruleList>
+        <componentTest>
+            <logic>exists</logic>
+            <name>visual</name>
+        </componentTest>
+    </ruleList>
+</shortcut>
+
+<!-- Linux Documentation Shortcut -->
+<shortcut>
+    <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+    <exec>xdg-open</exec>
+    <icon>${installdir}/${LINUX_ICON}</icon>
+    <name>${PROJECT_SHORT_NAME} Documentation</name>
+    <path>${installdir}/documentation</path>
+    <platforms>linux linux-x64</platforms>
+    <runInTerminal>0</runInTerminal>
+    <unixExecArgs>${installdir}/documentation/index.html</unixExecArgs>
+    <ruleList>
+        <componentTest>
+            <logic>exists</logic>
+            <name>documentation</name>
+        </componentTest>
+    </ruleList>
+</shortcut>

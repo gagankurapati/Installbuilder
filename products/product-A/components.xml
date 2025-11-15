@@ -1,0 +1,165 @@
+<!-- Product A Components: bin, documentation, solver, python, intelmpi -->
+
+<!-- Main Component (Always Required) -->
+<component>
+    <name>main</name>
+    <description>Core application files (required)</description>
+    <canBeEdited>0</canBeEdited>
+    <selected>1</selected>
+    <show>1</show>
+    <folderList>
+        <!-- Core files -->
+        <folder>
+            <description>Core Files</description>
+            <destination>${installdir}</destination>
+            <name>corefiles</name>
+            <platforms>all</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/common</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+        <!-- Windows-specific core files -->
+        <folder>
+            <description>Windows Core Files</description>
+            <destination>${installdir}</destination>
+            <name>windowscorefiles</name>
+            <platforms>windows</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/windows</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+        <!-- Linux-specific core files -->
+        <folder>
+            <description>Linux Core Files</description>
+            <destination>${installdir}</destination>
+            <name>linuxcorefiles</name>
+            <platforms>linux linux-x64</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/linux</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+    </folderList>
+
+    <!-- Include shortcuts from external file -->
+    <shortcutList>
+        <include>${SHORTCUTS_FILE}</include>
+    </shortcutList>
+</component>
+
+<!-- Bin Component -->
+<component>
+    <name>bin</name>
+    <description>Binary executables and core utilities</description>
+    <canBeEdited>1</canBeEdited>
+    <selected>1</selected>
+    <show>1</show>
+    <folderList>
+        <folder>
+            <description>Binary Files</description>
+            <destination>${installdir}/bin</destination>
+            <name>binfiles</name>
+            <platforms>all</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/bin</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+    </folderList>
+</component>
+
+<!-- Documentation Component -->
+<component>
+    <name>documentation</name>
+    <description>User manuals and API documentation</description>
+    <canBeEdited>1</canBeEdited>
+    <selected>1</selected>
+    <show>1</show>
+    <folderList>
+        <folder>
+            <description>Documentation Files</description>
+            <destination>${installdir}/documentation</destination>
+            <name>docfiles</name>
+            <platforms>all</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/documentation</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+    </folderList>
+</component>
+
+<!-- Solver Component -->
+<component>
+    <name>solver</name>
+    <description>Solver libraries and computational tools</description>
+    <canBeEdited>1</canBeEdited>
+    <selected>1</selected>
+    <show>1</show>
+    <folderList>
+        <folder>
+            <description>Solver Files</description>
+            <destination>${installdir}/solver</destination>
+            <name>solverfiles</name>
+            <platforms>all</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/solver</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+    </folderList>
+</component>
+
+<!-- Python Component -->
+<component>
+    <name>python</name>
+    <description>Python scripts and libraries for automation</description>
+    <canBeEdited>1</canBeEdited>
+    <selected>0</selected>
+    <show>1</show>
+    <folderList>
+        <folder>
+            <description>Python Files</description>
+            <destination>${installdir}/python</destination>
+            <name>pythonfiles</name>
+            <platforms>all</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/python</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+    </folderList>
+</component>
+
+<!-- Intel MPI Component -->
+<component>
+    <name>intelmpi</name>
+    <description>Intel MPI libraries for parallel computing</description>
+    <canBeEdited>1</canBeEdited>
+    <selected>0</selected>
+    <show>1</show>
+    <folderList>
+        <folder>
+            <description>Intel MPI Files</description>
+            <destination>${installdir}/intelmpi</destination>
+            <name>intelmpifiles</name>
+            <platforms>all</platforms>
+            <distributionFileList>
+                <distributionDirectory>
+                    <origin>${SOURCE_DIR}/intelmpi</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+    </folderList>
+</component>

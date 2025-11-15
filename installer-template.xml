@@ -26,8 +26,15 @@
     </enabledPlatforms>
 
     <!-- Component List -->
+    <!-- Components are loaded from external file specified in ${COMPONENTS_FILE} variable -->
+    <!-- This allows each product to have its own set of components -->
     <componentList>
-        <!-- Main Application Component -->
+        <include>${COMPONENTS_FILE}</include>
+    </componentList>
+
+    <!-- OLD Component List (kept for reference, not used when COMPONENTS_FILE is set) -->
+    <!--
+    <componentList>
         <component>
             <name>main</name>
             <description>${MAIN_COMPONENT_DESCRIPTION}</description>
@@ -209,6 +216,7 @@
             </folderList>
         </component>
     </componentList>
+    -->
 
     <!-- Post Installation Actions -->
     <postInstallationActionList>

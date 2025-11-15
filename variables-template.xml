@@ -92,6 +92,24 @@
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
+     SECTION 3A: EXTERNAL COMPONENT AND SHORTCUT FILES (⚠️ REQUIRED)
+     ═══════════════════════════════════════════════════════════════════════════
+     Point to product-specific component and shortcut definitions
+     This enables multi-product support using XML includes
+     ═══════════════════════════════════════════════════════════════════════════ -->
+
+    <!-- ⚠️ Path to components.xml file defining installer components -->
+    <!-- Each product should have its own components.xml file -->
+    <!-- Example: "${project_directory}/products/my-product/components.xml" -->
+    <COMPONENTS_FILE>${project_directory}/products/my-product/components.xml</COMPONENTS_FILE>
+
+    <!-- ⚠️ Path to shortcuts.xml file defining Windows/Linux shortcuts -->
+    <!-- Each product should have its own shortcuts.xml file -->
+    <!-- Example: "${project_directory}/products/my-product/shortcuts.xml" -->
+    <SHORTCUTS_FILE>${project_directory}/products/my-product/shortcuts.xml</SHORTCUTS_FILE>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
      SECTION 4: LICENSE AND LEGAL FILES (⚠️ REQUIRED for production)
      ═══════════════════════════════════════════════════════════════════════════
      Your license agreement and privacy notice
@@ -263,6 +281,8 @@
      [ ] LINUX_EXECUTABLE
      [ ] LINUX_ICON
      [ ] SOURCE_DIR
+     [ ] COMPONENTS_FILE (path to your components.xml)
+     [ ] SHORTCUTS_FILE (path to your shortcuts.xml)
      [ ] LICENSE_FILE
      [ ] PRIVACY_NOTICE_FILE
      [ ] DEFAULT_INSTALL_DIR

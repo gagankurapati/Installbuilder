@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Product A Variables
+    Components: bin, documentation, solver, python, intelmpi
+-->
+<variables>
+    <!-- ═══════════════════════════════════════════════════════════════
+         PROJECT INFORMATION
+         ═══════════════════════════════════════════════════════════════-->
+    <PROJECT_SHORT_NAME>ProductA</PROJECT_SHORT_NAME>
+    <PROJECT_FULL_NAME>Advanced Product A</PROJECT_FULL_NAME>
+    <PROJECT_VERSION>1.0.0</PROJECT_VERSION>
+    <VENDOR_NAME>Keysight Technologies</VENDOR_NAME>
+    <PROJECT_SUMMARY>Product A - Advanced simulation and analysis tool</PROJECT_SUMMARY>
+    <PROJECT_DESCRIPTION>Product A provides advanced simulation capabilities with solver integration, Python scripting, and Intel MPI support for high-performance computing.</PROJECT_DESCRIPTION>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         EXECUTABLE FILES
+         ═══════════════════════════════════════════════════════════════-->
+    <WINDOWS_EXECUTABLE>producta.exe</WINDOWS_EXECUTABLE>
+    <WINDOWS_ICON>producta.ico</WINDOWS_ICON>
+    <LINUX_EXECUTABLE>producta</LINUX_EXECUTABLE>
+    <LINUX_ICON>producta.png</LINUX_ICON>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SOURCE FILE LOCATIONS
+         ═══════════════════════════════════════════════════════════════-->
+    <SOURCE_DIR>${project_directory}/../../ProductA/build</SOURCE_DIR>
+    <PLATFORM_SPECIFIC_DIR>common</PLATFORM_SPECIFIC_DIR>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         EXTERNAL COMPONENT AND SHORTCUT FILES
+         ═══════════════════════════════════════════════════════════════-->
+    <!-- Point to product-specific component and shortcut definitions -->
+    <COMPONENTS_FILE>${project_directory}/products/product-A/components.xml</COMPONENTS_FILE>
+    <SHORTCUTS_FILE>${project_directory}/products/product-A/shortcuts.xml</SHORTCUTS_FILE>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LICENSE AND LEGAL FILES
+         ═══════════════════════════════════════════════════════════════-->
+    <LICENSE_FILE>${project_directory}/../../ProductA/LICENSE.txt</LICENSE_FILE>
+    <PRIVACY_NOTICE_FILE>${project_directory}/../../ProductA/PRIVACY.txt</PRIVACY_NOTICE_FILE>
+    <SPLASH_IMAGE>${project_directory}/../../ProductA/assets/splash.png</SPLASH_IMAGE>
+    <README_FILE>${project_directory}/../../ProductA/README.txt</README_FILE>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         INSTALLATION DIRECTORY
+         ═══════════════════════════════════════════════════════════════-->
+    <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         INSTALLER OUTPUT
+         ═══════════════════════════════════════════════════════════════-->
+    <INSTALLER_FILENAME>producta-${PROJECT_VERSION}-installer</INSTALLER_FILENAME>
+    <ENABLED_PLATFORMS>windows linux-x64</ENABLED_PLATFORMS>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         WINDOWS SHORTCUTS
+         ═══════════════════════════════════════════════════════════════-->
+    <WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+    <CREATE_DESKTOP_SHORTCUTS>1</CREATE_DESKTOP_SHORTCUTS>
+    <CREATE_START_MENU_SHORTCUTS>1</CREATE_START_MENU_SHORTCUTS>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LINUX INTEGRATION
+         ═══════════════════════════════════════════════════════════════-->
+    <INSTALL_LINUX_ALIASES>1</INSTALL_LINUX_ALIASES>
+    <LINUX_ALIAS_FILE>~/.bash_aliases</LINUX_ALIAS_FILE>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         COMPONENT DESCRIPTIONS (for reference, actual components in components.xml)
+         ═══════════════════════════════════════════════════════════════-->
+    <MAIN_COMPONENT_DESCRIPTION>Core application files (required)</MAIN_COMPONENT_DESCRIPTION>
+    <DOCS_COMPONENT_DESCRIPTION>Not used - components defined in external file</DOCS_COMPONENT_DESCRIPTION>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         WINDOWS REGISTRY
+         ═══════════════════════════════════════════════════════════════-->
+    <REGISTRY_KEY>HKEY_LOCAL_MACHINE\Software\${VENDOR_NAME}\${PROJECT_SHORT_NAME}</REGISTRY_KEY>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         WINDOWS PATH
+         ═══════════════════════════════════════════════════════════════-->
+    <ADD_TO_PATH_DEFAULT>1</ADD_TO_PATH_DEFAULT>
+    <ADD_TO_PATH_POSITION>end</ADD_TO_PATH_POSITION>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         UNINSTALLER
+         ═══════════════════════════════════════════════════════════════-->
+    <UNINSTALLER_NAME>uninstall-${PROJECT_SHORT_NAME}</UNINSTALLER_NAME>
+</variables>
