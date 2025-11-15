@@ -293,11 +293,13 @@ Choose ONE pattern:
 | `ENABLED_PLATFORMS` | Target platforms | `windows linux-x64` |
 
 **Platform Options:**
-- `windows` - Windows 32/64-bit
-- `linux` - Linux 32-bit
-- `linux-x64` - Linux 64-bit
+- `windows` - Windows (both 32-bit and 64-bit)
+- `linux-x64` - Linux 64-bit (RECOMMENDED)
+- `linux` - Linux 32-bit (rarely needed)
 - `osx` - macOS
 - `all` - All platforms
+
+**Most Common:** `windows linux-x64` (Windows + Linux 64-bit only)
 
 ### Section 7: Windows Shortcuts (🔧 OPTIONAL)
 

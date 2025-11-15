@@ -73,7 +73,7 @@
                     <description>Linux Program Files</description>
                     <destination>${installdir}</destination>
                     <name>linuxfiles</name>
-                    <platforms>linux linux-x64</platforms>
+                    <platforms>linux-x64</platforms>
                     <distributionFileList>
                         <distributionDirectory>
                             <origin>${SOURCE_DIR}/linux</origin>
@@ -162,7 +162,7 @@
                     <icon>${installdir}/${LINUX_ICON}</icon>
                     <name>${PROJECT_SHORT_NAME}</name>
                     <path>${installdir}</path>
-                    <platforms>linux linux-x64</platforms>
+                    <platforms>linux-x64</platforms>
                     <runInTerminal>0</runInTerminal>
                     <ruleList>
                         <isTrue>
@@ -178,7 +178,7 @@
                     <icon>${installdir}/${LINUX_ICON}</icon>
                     <name>${PROJECT_SHORT_NAME} Documentation</name>
                     <path>${installdir}/docs</path>
-                    <platforms>linux linux-x64</platforms>
+                    <platforms>linux-x64</platforms>
                     <runInTerminal>0</runInTerminal>
                     <unixExecArgs>${installdir}/docs/index.html</unixExecArgs>
                     <ruleList>

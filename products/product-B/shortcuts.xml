@@ -111,7 +111,7 @@
     <icon>${installdir}/${LINUX_ICON}</icon>
     <name>${PROJECT_SHORT_NAME}</name>
     <path>${installdir}</path>
-    <platforms>linux linux-x64</platforms>
+    <platforms>linux-x64</platforms>
     <runInTerminal>0</runInTerminal>
 </shortcut>
 
@@ -122,7 +122,7 @@
     <icon>${installdir}/${LINUX_ICON}</icon>
     <name>${PROJECT_SHORT_NAME} Visualizer</name>
     <path>${installdir}/visual</path>
-    <platforms>linux linux-x64</platforms>
+    <platforms>linux-x64</platforms>
     <runInTerminal>0</runInTerminal>
     <ruleList>
         <componentTest>
@@ -139,7 +139,7 @@
     <icon>${installdir}/${LINUX_ICON}</icon>
     <name>${PROJECT_SHORT_NAME} Documentation</name>
     <path>${installdir}/documentation</path>
-    <platforms>linux linux-x64</platforms>
+    <platforms>linux-x64</platforms>
     <runInTerminal>0</runInTerminal>
     <unixExecArgs>${installdir}/documentation/index.html</unixExecArgs>
     <ruleList>
