@@ -135,13 +135,14 @@
      SECTION 5: INSTALLATION DIRECTORY (⚠️ REQUIRED - Choose ONE pattern)
      ═══════════════════════════════════════════════════════════════════════════
      Where your application will be installed by default
-     UNCOMMENT THE PATTERN YOU WANT TO USE (remove the <!-- and -->)
      ═══════════════════════════════════════════════════════════════════════════ -->
+
+    <!-- ⚠️ REQUIRED: Choose ONE pattern below and set it -->
 
     <!-- PATTERN 1: Simple (no vendor folder) -->
     <!-- Result Windows: C:\Program Files\MyApp -->
     <!-- Result Linux: /opt/MyApp -->
-    <!-- <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR> -->
+    <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 
     <!-- PATTERN 2: With vendor folder (RECOMMENDED) -->
     <!-- Result Windows: C:\Program Files\YourCompany\MyApp -->
@@ -151,7 +152,7 @@
     <!-- PATTERN 3: With version (for side-by-side installs) -->
     <!-- Result Windows: C:\Program Files\YourCompany\MyApp\1.0.0 -->
     <!-- Result Linux: /opt/YourCompany/MyApp/1.0.0 -->
-    <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR>
+    <!-- <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR> -->
 
     <!-- PATTERN 4: Custom path (advanced users) -->
     <!-- Specify your own path structure -->
