@@ -1,305 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    ═══════════════════════════════════════════════════════════════════════════
-    INSTALLBUILDER VARIABLES CONFIGURATION
-    ═══════════════════════════════════════════════════════════════════════════
-
-    📋 INSTRUCTIONS:
-    Fill in the values below for your application.
-    This is the ONLY file you need to edit to create your installer!
-
-    ⚠️  REQUIRED FIELDS: Must be filled
-    ⭐ RECOMMENDED FIELDS: Strongly recommended
-    🔧 OPTIONAL FIELDS: Can be left as default or customized
-
-    After editing, build with:
-    builder build installer-template.xml --setvars variables.xml
-
-    ═══════════════════════════════════════════════════════════════════════════
--->
+<!-- InstallBuilder Variables Configuration -->
 <variables>
 
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 1: PROJECT INFORMATION (⚠️ REQUIRED)
-     ═══════════════════════════════════════════════════════════════════════════
-     These values identify your application
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⚠️ Short name (no spaces, used for directories and technical names) -->
-    <!-- Examples: "MyApp", "SignalAnalyzer", "TextEditor" -->
+    <!-- PROJECT INFORMATION -->
     <PROJECT_SHORT_NAME>MyApp</PROJECT_SHORT_NAME>
-
-    <!-- ⚠️ Full display name (shown to users in installer) -->
-    <!-- Examples: "My Application", "Signal Analyzer Pro", "Advanced Text Editor" -->
     <PROJECT_FULL_NAME>My Application Name</PROJECT_FULL_NAME>
-
-    <!-- ⚠️ Version number (format: major.minor.patch) -->
-    <!-- Examples: "1.0.0", "2.5.1", "3.0.0-beta" -->
     <PROJECT_VERSION>1.0.0</PROJECT_VERSION>
-
-    <!-- ⚠️ Your company or vendor name -->
-    <!-- Examples: "Your Company", "Keysight Technologies", "ACME Corp" -->
     <VENDOR_NAME>Your Company Name</VENDOR_NAME>
-
-    <!-- ⭐ Brief one-line summary (shown in installer) -->
     <PROJECT_SUMMARY>A brief summary of your application</PROJECT_SUMMARY>
-
-    <!-- ⭐ Detailed description (shown in installer) -->
     <PROJECT_DESCRIPTION>A detailed description of what your application does and its key features.</PROJECT_DESCRIPTION>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 2: EXECUTABLE FILES (⚠️ REQUIRED)
-     ═══════════════════════════════════════════════════════════════════════════
-     Specify your application executables and icons
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⚠️ Windows executable filename (must include .exe extension) -->
-    <!-- Example: "myapp.exe", "signalanalyzer.exe" -->
+    <!-- EXECUTABLES -->
     <WINDOWS_EXECUTABLE>myapp.exe</WINDOWS_EXECUTABLE>
-
-    <!-- ⚠️ Windows icon file (relative to install directory, .ico format) -->
-    <!-- Example: "myapp.ico", "app.ico" -->
     <WINDOWS_ICON>myapp.ico</WINDOWS_ICON>
-
-    <!-- ⚠️ Linux executable filename (no extension) -->
-    <!-- Example: "myapp", "signalanalyzer" -->
     <LINUX_EXECUTABLE>myapp</LINUX_EXECUTABLE>
-
-    <!-- ⚠️ Linux icon file (relative to install directory, .png format recommended) -->
-    <!-- Example: "myapp.png", "app.png" -->
     <LINUX_ICON>myapp.png</LINUX_ICON>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 3: SOURCE FILE LOCATIONS (⚠️ REQUIRED)
-     ═══════════════════════════════════════════════════════════════════════════
-     Where your application files are located for packaging
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⚠️ Base directory containing your application files -->
-    <!-- Use ${project_directory} for relative paths from installer-template.xml -->
-    <!-- Examples: "${project_directory}/dist", "/path/to/your/build/output" -->
+    <!-- SOURCE FILE LOCATIONS -->
     <SOURCE_DIR>${project_directory}/dist</SOURCE_DIR>
-
-    <!-- 🔧 Platform-specific subdirectory (if using platform-neutral structure) -->
-    <!-- Leave as "common" or change to your common files folder name -->
     <PLATFORM_SPECIFIC_DIR>common</PLATFORM_SPECIFIC_DIR>
-
-    <!-- ⭐ Documentation directory (for documentation component) -->
-    <!-- Set to empty if no documentation: <DOCS_DIR></DOCS_DIR> -->
     <DOCS_DIR>${project_directory}/docs</DOCS_DIR>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 3A: EXTERNAL COMPONENT AND SHORTCUT FILES (⚠️ REQUIRED)
-     ═══════════════════════════════════════════════════════════════════════════
-     Point to product-specific component and shortcut definitions
-     This enables multi-product support using XML includes
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⚠️ Path to components.xml file defining installer components -->
-    <!-- Each product should have its own components.xml file -->
-    <!-- Example: "${project_directory}/products/my-product/components.xml" -->
+    <!-- EXTERNAL COMPONENT AND SHORTCUT FILES -->
     <COMPONENTS_FILE>${project_directory}/products/my-product/components.xml</COMPONENTS_FILE>
-
-    <!-- ⚠️ Path to shortcuts.xml file defining Windows/Linux shortcuts -->
-    <!-- Each product should have its own shortcuts.xml file -->
-    <!-- Example: "${project_directory}/products/my-product/shortcuts.xml" -->
     <SHORTCUTS_FILE>${project_directory}/products/my-product/shortcuts.xml</SHORTCUTS_FILE>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 4: LICENSE AND LEGAL FILES (⚠️ REQUIRED for production)
-     ═══════════════════════════════════════════════════════════════════════════
-     Your license agreement and privacy notice
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⚠️ Path to your license file (shown in License Agreement page) -->
-    <!-- Format: .txt or .rtf -->
+    <!-- LICENSE AND LEGAL FILES -->
     <LICENSE_FILE>${project_directory}/LICENSE.txt</LICENSE_FILE>
-
-    <!-- ⚠️ Path to privacy notice file (shown in Privacy Notice page) -->
-    <!-- Format: .txt or .rtf -->
     <PRIVACY_NOTICE_FILE>${project_directory}/PRIVACY_NOTICE.txt</PRIVACY_NOTICE_FILE>
-
-    <!-- ⭐ Path to splash screen image (shown while installer loads) -->
-    <!-- Format: .png, .jpg, or .bmp. Recommended size: 500x300 pixels -->
     <SPLASH_IMAGE>${project_directory}/splash.png</SPLASH_IMAGE>
-
-    <!-- 🔧 Path to readme file (optional) -->
     <README_FILE>${project_directory}/README.txt</README_FILE>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 5: INSTALLATION DIRECTORY (⚠️ REQUIRED - Choose ONE pattern)
-     ═══════════════════════════════════════════════════════════════════════════
-     Where your application will be installed by default
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⚠️ REQUIRED: Choose ONE pattern below and set it -->
-
-    <!-- PATTERN 1: Simple (no vendor folder) -->
-    <!-- Result Windows: C:\Program Files\MyApp -->
-    <!-- Result Linux: /opt/MyApp -->
+    <!-- INSTALLATION DIRECTORY -->
+    <!-- Pattern 1: Simple -->
     <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
-
-    <!-- PATTERN 2: With vendor folder (RECOMMENDED) -->
-    <!-- Result Windows: C:\Program Files\YourCompany\MyApp -->
-    <!-- Result Linux: /opt/YourCompany/MyApp -->
+    <!-- Pattern 2: With vendor folder -->
     <!-- <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR> -->
-
-    <!-- PATTERN 3: With version (for side-by-side installs) -->
-    <!-- Result Windows: C:\Program Files\YourCompany\MyApp\1.0.0 -->
-    <!-- Result Linux: /opt/YourCompany/MyApp/1.0.0 -->
+    <!-- Pattern 3: With version -->
     <!-- <DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR> -->
 
-    <!-- PATTERN 4: Custom path (advanced users) -->
-    <!-- Specify your own path structure -->
-    <!-- <DEFAULT_INSTALL_DIR>C:\MyApps\${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR> -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 6: INSTALLER OUTPUT SETTINGS (⭐ RECOMMENDED)
-     ═══════════════════════════════════════════════════════════════════════════
-     Configure the installer filename and target platforms
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⭐ Installer filename (platform suffix added automatically) -->
-    <!-- Result: "myapp-installer-1.0.0-windows-installer.exe" -->
+    <!-- INSTALLER OUTPUT -->
     <INSTALLER_FILENAME>myapp-installer-${PROJECT_VERSION}</INSTALLER_FILENAME>
-
-    <!-- ⭐ Target platforms (space-separated list) -->
-    <!-- Options: "windows" "linux-x64" (64-bit Linux) "linux" (32-bit Linux) "osx" or "all" -->
-    <!-- For both Windows and Linux 64-bit: "windows linux-x64" -->
     <ENABLED_PLATFORMS>windows linux-x64</ENABLED_PLATFORMS>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 7: WINDOWS SHORTCUTS CONFIGURATION (🔧 OPTIONAL)
-     ═══════════════════════════════════════════════════════════════════════════
-     Control Windows Start Menu and Desktop shortcuts
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- 🔧 Start Menu folder structure (Windows only) -->
-    <!-- Choose ONE pattern (uncomment the one you want) -->
-
-    <!-- Simple: Start Menu → MyApp → shortcuts -->
-    <!-- <WINDOWS_START_MENU_FOLDER>${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER> -->
-
-    <!-- With vendor (RECOMMENDED): Start Menu → YourCompany → MyApp → shortcuts -->
+    <!-- WINDOWS SHORTCUTS -->
     <WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
-
-    <!-- Multi-level: Start Menu → Category → YourCompany → MyApp → shortcuts -->
-    <!-- <WINDOWS_START_MENU_FOLDER>Engineering\${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER> -->
-
-    <!-- 🔧 Create desktop shortcuts? (1 = yes, 0 = no) -->
     <CREATE_DESKTOP_SHORTCUTS>1</CREATE_DESKTOP_SHORTCUTS>
-
-    <!-- 🔧 Create Start Menu shortcuts? (1 = yes, 0 = no) -->
     <CREATE_START_MENU_SHORTCUTS>1</CREATE_START_MENU_SHORTCUTS>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 8: LINUX INTEGRATION (🔧 OPTIONAL)
-     ═══════════════════════════════════════════════════════════════════════════
-     Control Linux aliases and desktop integration
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- 🔧 Install Linux shell aliases? (1 = yes, 0 = no) -->
-    <!-- Aliases like: myapp, myapp-help, myapp-config, cd-myapp -->
+    <!-- LINUX INTEGRATION -->
     <INSTALL_LINUX_ALIASES>1</INSTALL_LINUX_ALIASES>
-
-    <!-- 🔧 Linux alias file location -->
-    <!-- Default: ~/.bash_aliases (works for most shells) -->
     <LINUX_ALIAS_FILE>~/.bash_aliases</LINUX_ALIAS_FILE>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 9: COMPONENT DESCRIPTIONS (⭐ RECOMMENDED)
-     ═══════════════════════════════════════════════════════════════════════════
-     Text shown in the Custom Setup wizard for each component
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- ⭐ Main component description (always installed) -->
+    <!-- COMPONENT DESCRIPTIONS -->
     <MAIN_COMPONENT_DESCRIPTION>Main application files (required)</MAIN_COMPONENT_DESCRIPTION>
-
-    <!-- ⭐ Documentation component description (optional component) -->
     <DOCS_COMPONENT_DESCRIPTION>Documentation and user guides (optional)</DOCS_COMPONENT_DESCRIPTION>
 
-    <!-- 🔧 Add more component descriptions here if you add components -->
-    <!-- Example: <SDK_COMPONENT_DESCRIPTION>SDK and development tools</SDK_COMPONENT_DESCRIPTION> -->
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 10: WINDOWS REGISTRY (🔧 OPTIONAL - Advanced)
-     ═══════════════════════════════════════════════════════════════════════════
-     Registry key for Windows installation information
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- 🔧 Registry key path (appears in Windows Add/Remove Programs) -->
-    <!-- Default pattern works for most applications -->
+    <!-- WINDOWS REGISTRY -->
     <REGISTRY_KEY>HKEY_LOCAL_MACHINE\Software\${VENDOR_NAME}\${PROJECT_SHORT_NAME}</REGISTRY_KEY>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 11: WINDOWS PATH ENVIRONMENT (🔧 OPTIONAL)
-     ═══════════════════════════════════════════════════════════════════════════
-     Add application to Windows system PATH
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- 🔧 Add to Windows PATH by default? (1 = yes, 0 = no) -->
+    <!-- WINDOWS PATH -->
     <ADD_TO_PATH_DEFAULT>1</ADD_TO_PATH_DEFAULT>
-
-    <!-- 🔧 Where to add in PATH ("beginning" or "end") -->
     <ADD_TO_PATH_POSITION>end</ADD_TO_PATH_POSITION>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECTION 12: UNINSTALLER (🔧 OPTIONAL)
-     ═══════════════════════════════════════════════════════════════════════════
-     Uninstaller configuration (Windows only)
-     ═══════════════════════════════════════════════════════════════════════════ -->
-
-    <!-- 🔧 Uninstaller executable name (Windows) -->
-    <!-- Will appear in Start Menu and Add/Remove Programs -->
+    <!-- UNINSTALLER -->
     <UNINSTALLER_NAME>uninstall-${PROJECT_SHORT_NAME}</UNINSTALLER_NAME>
-
-
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     END OF CONFIGURATION
-     ═══════════════════════════════════════════════════════════════════════════
-
-     ✅ CHECKLIST - Did you fill in:
-
-     REQUIRED:
-     [ ] PROJECT_SHORT_NAME
-     [ ] PROJECT_FULL_NAME
-     [ ] PROJECT_VERSION
-     [ ] VENDOR_NAME
-     [ ] WINDOWS_EXECUTABLE
-     [ ] WINDOWS_ICON
-     [ ] LINUX_EXECUTABLE
-     [ ] LINUX_ICON
-     [ ] SOURCE_DIR
-     [ ] COMPONENTS_FILE (path to your components.xml)
-     [ ] SHORTCUTS_FILE (path to your shortcuts.xml)
-     [ ] LICENSE_FILE
-     [ ] PRIVACY_NOTICE_FILE
-     [ ] DEFAULT_INSTALL_DIR
-
-     RECOMMENDED:
-     [ ] PROJECT_SUMMARY
-     [ ] PROJECT_DESCRIPTION
-     [ ] SPLASH_IMAGE
-     [ ] DOCS_DIR
-     [ ] INSTALLER_FILENAME
-     [ ] WINDOWS_START_MENU_FOLDER
-     [ ] Component descriptions
-
-     Ready to build? Run:
-     builder build installer-template.xml --setvars variables.xml
-
-     ═══════════════════════════════════════════════════════════════════════════ -->
 
 </variables>
