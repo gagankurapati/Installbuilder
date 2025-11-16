@@ -1,6 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Product A Shortcuts -->
+<shortcutList>
 
-<!-- Main Application Shortcut -->
+<!-- Windows Main Application -->
 <shortcut>
     <comment>Launch ${PROJECT_FULL_NAME}</comment>
     <exec>${installdir}/bin/${WINDOWS_EXECUTABLE}</exec>
@@ -10,7 +12,6 @@
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
     <windowsExec>${installdir}/bin/${WINDOWS_EXECUTABLE}</windowsExec>
-    <windowsExecArgs></windowsExecArgs>
     <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
     <windowsPath>${installdir}</windowsPath>
     <programGroupAllUsers>1</programGroupAllUsers>
@@ -18,7 +19,7 @@
     <windowsCreateDesktopIcon>1</windowsCreateDesktopIcon>
 </shortcut>
 
-<!-- Solver Shortcut -->
+<!-- Windows Solver -->
 <shortcut>
     <comment>Run ${PROJECT_SHORT_NAME} Solver</comment>
     <exec>${installdir}/solver/solver.exe</exec>
@@ -28,7 +29,6 @@
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
     <windowsExec>${installdir}/solver/solver.exe</windowsExec>
-    <windowsExecArgs></windowsExecArgs>
     <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
     <windowsPath>${installdir}/solver</windowsPath>
     <programGroupAllUsers>1</programGroupAllUsers>
@@ -41,7 +41,7 @@
     </ruleList>
 </shortcut>
 
-<!-- Python Console Shortcut -->
+<!-- Windows Python Console -->
 <shortcut>
     <comment>Python scripting console for ${PROJECT_SHORT_NAME}</comment>
     <exec>${installdir}/python/python.exe</exec>
@@ -51,7 +51,6 @@
     <platforms>windows</platforms>
     <runInTerminal>1</runInTerminal>
     <windowsExec>${installdir}/python/python.exe</windowsExec>
-    <windowsExecArgs></windowsExecArgs>
     <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
     <windowsPath>${installdir}/python</windowsPath>
     <programGroupAllUsers>1</programGroupAllUsers>
@@ -64,7 +63,7 @@
     </ruleList>
 </shortcut>
 
-<!-- Documentation Shortcut -->
+<!-- Windows Documentation -->
 <shortcut>
     <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
     <exec>${installdir}/documentation/index.html</exec>
@@ -74,7 +73,6 @@
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
     <windowsExec>${installdir}/documentation/index.html</windowsExec>
-    <windowsExecArgs></windowsExecArgs>
     <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
     <windowsPath>${installdir}/documentation</windowsPath>
     <programGroupAllUsers>1</programGroupAllUsers>
@@ -87,7 +85,7 @@
     </ruleList>
 </shortcut>
 
-<!-- Uninstaller Shortcut -->
+<!-- Windows Uninstaller -->
 <shortcut>
     <comment>Uninstall ${PROJECT_FULL_NAME}</comment>
     <exec>${installdir}/${UNINSTALLER_NAME}.exe</exec>
@@ -97,14 +95,13 @@
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
     <windowsExec>${installdir}/${UNINSTALLER_NAME}.exe</windowsExec>
-    <windowsExecArgs></windowsExecArgs>
     <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
     <windowsPath>${installdir}</windowsPath>
     <programGroupAllUsers>1</programGroupAllUsers>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
 </shortcut>
 
-<!-- Linux Main Application Shortcut -->
+<!-- Linux Main Application -->
 <shortcut>
     <comment>Launch ${PROJECT_FULL_NAME}</comment>
     <exec>${installdir}/bin/${LINUX_EXECUTABLE}</exec>
@@ -115,7 +112,7 @@
     <runInTerminal>0</runInTerminal>
 </shortcut>
 
-<!-- Linux Documentation Shortcut -->
+<!-- Linux Documentation -->
 <shortcut>
     <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
     <exec>xdg-open</exec>
@@ -132,3 +129,5 @@
         </componentTest>
     </ruleList>
 </shortcut>
+
+</shortcutList>

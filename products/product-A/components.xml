@@ -39,7 +39,7 @@
             <description>Linux Core Files</description>
             <destination>${installdir}</destination>
             <name>linuxcorefiles</name>
-            <platforms>linux linux-x64</platforms>
+            <platforms>linux-x64</platforms>
             <distributionFileList>
                 <distributionDirectory>
                     <origin>${SOURCE_DIR}/linux</origin>
