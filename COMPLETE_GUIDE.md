@@ -54,10 +54,10 @@ cp products/product-A/shortcuts.xml products/my-product/shortcuts.xml
 Open `products/my-product/variables.xml` and change these essential values:
 
 ```xml
-<!-- Project Information -->
-<PROJECT_SHORT_NAME>MyApp</PROJECT_SHORT_NAME>
-<PROJECT_FULL_NAME>My Application Name</PROJECT_FULL_NAME>
-<PROJECT_VERSION>1.0.0</PROJECT_VERSION>
+<!-- Product Information -->
+<PRODUCT_SHORT_NAME>MyApp</PRODUCT_SHORT_NAME>
+<PRODUCT_NAME>My Application Name</PRODUCT_NAME>
+<PRODUCT_VERSION>1.0.0</PRODUCT_VERSION>
 <VENDOR_NAME>Your Company Name</VENDOR_NAME>
 
 <!-- Executables -->
@@ -227,12 +227,11 @@ products/
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `PROJECT_SHORT_NAME` | Short name (no spaces) | `MyApp` |
-| `PROJECT_FULL_NAME` | Display name | `My Application` |
-| `PROJECT_VERSION` | Version number | `1.0.0` |
+| `PRODUCT_SHORT_NAME` | Short name (no spaces) | `MyApp` |
+| `PRODUCT_NAME` | Display name | `My Application` |
+| `PRODUCT_VERSION` | Version number | `1.0.0` |
 | `VENDOR_NAME` | Company/vendor name | `Your Company` |
-| `PROJECT_SUMMARY` | Brief one-line summary | `Advanced data analysis tool` |
-| `PROJECT_DESCRIPTION` | Detailed description | `Provides comprehensive analysis...` |
+| `PRODUCT_DESCRIPTION` | Detailed description | `Provides comprehensive analysis...` |
 
 ### Section 2: Executable Files (⚠️ REQUIRED)
 
@@ -274,22 +273,22 @@ Choose ONE pattern:
 ```xml
 <!-- Pattern 1: Simple (no vendor folder) -->
 <!-- Result: C:\Program Files\MyApp -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PRODUCT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 
 <!-- Pattern 2: With vendor folder (RECOMMENDED) -->
 <!-- Result: C:\Program Files\YourCompany\MyApp -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PRODUCT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 
 <!-- Pattern 3: With version (for side-by-side installs) -->
 <!-- Result: C:\Program Files\YourCompany\MyApp\1.0.0 -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PRODUCT_SHORT_NAME}/${PRODUCT_VERSION}</DEFAULT_INSTALL_DIR>
 ```
 
 ### Section 6: Installer Output (⭐ RECOMMENDED)
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `INSTALLER_FILENAME` | Installer filename | `myapp-installer-${PROJECT_VERSION}` |
+| `INSTALLER_FILENAME` | Installer filename | `myapp-installer-${PRODUCT_VERSION}` |
 | `ENABLED_PLATFORMS` | Target platforms | `windows linux-x64` |
 
 **Platform Options:**
@@ -305,7 +304,7 @@ Choose ONE pattern:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `WINDOWS_START_MENU_FOLDER` | Start Menu folder structure | `${VENDOR_NAME}\${PROJECT_SHORT_NAME}` |
+| `WINDOWS_START_MENU_FOLDER` | Start Menu folder structure | `${VENDOR_NAME}\${PRODUCT_SHORT_NAME}` |
 | `CREATE_DESKTOP_SHORTCUTS` | Create desktop shortcuts | `1` (yes) |
 | `CREATE_START_MENU_SHORTCUTS` | Create Start Menu shortcuts | `1` (yes) |
 
@@ -313,13 +312,13 @@ Choose ONE pattern:
 
 ```xml
 <!-- Simple: Start Menu → MyApp -->
-<WINDOWS_START_MENU_FOLDER>${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 
 <!-- With vendor (RECOMMENDED): Start Menu → YourCompany → MyApp -->
-<WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 
 <!-- Multi-level: Start Menu → Engineering → YourCompany → MyApp -->
-<WINDOWS_START_MENU_FOLDER>Engineering\${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>Engineering\${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 ```
 
 ### Section 8: Linux Integration (🔧 OPTIONAL)
@@ -346,7 +345,7 @@ Choose ONE pattern:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `REGISTRY_KEY` | Registry key path | `HKEY_LOCAL_MACHINE\Software\${VENDOR_NAME}\${PROJECT_SHORT_NAME}` |
+| `REGISTRY_KEY` | Registry key path | `HKEY_LOCAL_MACHINE\Software\${VENDOR_NAME}\${PRODUCT_SHORT_NAME}` |
 
 ### Section 11: Windows PATH (🔧 OPTIONAL)
 
@@ -359,7 +358,7 @@ Choose ONE pattern:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `UNINSTALLER_NAME` | Uninstaller executable name | `uninstall-${PROJECT_SHORT_NAME}` |
+| `UNINSTALLER_NAME` | Uninstaller executable name | `uninstall-${PRODUCT_SHORT_NAME}` |
 
 ---
 
@@ -369,9 +368,9 @@ Use this checklist when creating a new product configuration:
 
 ### ⚠️ REQUIRED Variables
 
-- [ ] `PROJECT_SHORT_NAME` - Short name (no spaces)
-- [ ] `PROJECT_FULL_NAME` - Display name
-- [ ] `PROJECT_VERSION` - Version number (e.g., 1.0.0)
+- [ ] `PRODUCT_SHORT_NAME` - Short name (no spaces)
+- [ ] `PRODUCT_NAME` - Display name
+- [ ] `PRODUCT_VERSION` - Version number (e.g., 1.0.0)
 - [ ] `VENDOR_NAME` - Company/vendor name
 - [ ] `WINDOWS_EXECUTABLE` - Windows .exe filename
 - [ ] `WINDOWS_ICON` - Windows icon file (.ico)
@@ -386,8 +385,7 @@ Use this checklist when creating a new product configuration:
 
 ### ⭐ RECOMMENDED Variables
 
-- [ ] `PROJECT_SUMMARY` - Brief one-line summary
-- [ ] `PROJECT_DESCRIPTION` - Detailed description
+- [ ] `PRODUCT_DESCRIPTION` - Detailed description
 - [ ] `SPLASH_IMAGE` - Splash screen image (500x300 recommended)
 - [ ] `DOCS_DIR` - Documentation directory
 - [ ] `INSTALLER_FILENAME` - Output filename
@@ -505,9 +503,9 @@ cp products/product-A/shortcuts.xml products/your-product-name/shortcuts.xml
 Update product information and file paths:
 
 ```xml
-<PROJECT_SHORT_NAME>YourProduct</PROJECT_SHORT_NAME>
-<PROJECT_FULL_NAME>Your Product Name</PROJECT_FULL_NAME>
-<PROJECT_VERSION>1.0.0</PROJECT_VERSION>
+<PRODUCT_SHORT_NAME>YourProduct</PRODUCT_SHORT_NAME>
+<PRODUCT_NAME>Your Product Name</PRODUCT_NAME>
+<PRODUCT_VERSION>1.0.0</PRODUCT_VERSION>
 
 <COMPONENTS_FILE>${project_directory}/products/your-product-name/components.xml</COMPONENTS_FILE>
 <SHORTCUTS_FILE>${project_directory}/products/your-product-name/shortcuts.xml</SHORTCUTS_FILE>
@@ -926,10 +924,10 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 
 ```xml
 <shortcut>
-    <comment>Launch ${PROJECT_SHORT_NAME}</comment>
+    <comment>Launch ${PRODUCT_SHORT_NAME}</comment>
     <exec>${installdir}/${WINDOWS_EXECUTABLE}</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME}</name>
+    <name>${PRODUCT_SHORT_NAME}</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <runInTerminal>0</runInTerminal>
@@ -943,9 +941,9 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 
 ```xml
 <shortcut>
-    <comment>Command-line interface for ${PROJECT_SHORT_NAME}</comment>
+    <comment>Command-line interface for ${PRODUCT_SHORT_NAME}</comment>
     <exec>${installdir}/bin/tool.exe</exec>
-    <name>${PROJECT_SHORT_NAME} CLI</name>
+    <name>${PRODUCT_SHORT_NAME} CLI</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <runInTerminal>1</runInTerminal>  <!-- Opens in terminal -->
@@ -956,10 +954,10 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 
 ```xml
 <shortcut>
-    <comment>Launch ${PROJECT_SHORT_NAME}</comment>
+    <comment>Launch ${PRODUCT_SHORT_NAME}</comment>
     <exec>${installdir}/${LINUX_EXECUTABLE}</exec>
     <icon>${installdir}/${LINUX_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME}</name>
+    <name>${PRODUCT_SHORT_NAME}</name>
     <platforms>linux linux-x64</platforms>
     <runInTerminal>0</runInTerminal>
 </shortcut>
@@ -971,7 +969,7 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 <shortcut>
     <comment>Command-line interface</comment>
     <exec>${installdir}/bin/tool</exec>
-    <name>${PROJECT_SHORT_NAME} CLI</name>
+    <name>${PRODUCT_SHORT_NAME} CLI</name>
     <platforms>linux linux-x64</platforms>
     <runInTerminal>1</runInTerminal>  <!-- Opens in terminal -->
 </shortcut>
@@ -981,10 +979,10 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 
 ```xml
 <shortcut>
-    <comment>Launch ${PROJECT_SHORT_NAME}</comment>
+    <comment>Launch ${PRODUCT_SHORT_NAME}</comment>
     <exec>${installdir}/${WINDOWS_EXECUTABLE}</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME}</name>
+    <name>${PRODUCT_SHORT_NAME}</name>
     <platforms>all</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <runInTerminal>0</runInTerminal>
@@ -1003,7 +1001,7 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 <shortcut>
     <comment>Launch Database Manager</comment>
     <exec>${installdir}/database/manager.exe</exec>
-    <name>${PROJECT_SHORT_NAME} Database Manager</name>
+    <name>${PRODUCT_SHORT_NAME} Database Manager</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <ruleList>
@@ -1021,9 +1019,9 @@ Shortcuts define Start Menu entries (Windows), Desktop shortcuts (Windows), and 
 Windows:
 ```xml
 <shortcut>
-    <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+    <comment>View ${PRODUCT_SHORT_NAME} Documentation</comment>
     <exec>${installdir}/docs/index.html</exec>
-    <name>${PROJECT_SHORT_NAME} Documentation</name>
+    <name>${PRODUCT_SHORT_NAME} Documentation</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <ruleList>
@@ -1038,10 +1036,10 @@ Windows:
 Linux:
 ```xml
 <shortcut>
-    <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+    <comment>View ${PRODUCT_SHORT_NAME} Documentation</comment>
     <exec>xdg-open</exec>
     <execArgs>${installdir}/docs/index.html</execArgs>
-    <name>${PROJECT_SHORT_NAME} Documentation</name>
+    <name>${PRODUCT_SHORT_NAME} Documentation</name>
     <platforms>linux linux-x64</platforms>
     <ruleList>
         <componentTest>
@@ -1056,9 +1054,9 @@ Linux:
 
 ```xml
 <shortcut>
-    <comment>Uninstall ${PROJECT_SHORT_NAME}</comment>
+    <comment>Uninstall ${PRODUCT_SHORT_NAME}</comment>
     <exec>${installdir}/${UNINSTALLER_NAME}.exe</exec>
-    <name>Uninstall ${PROJECT_SHORT_NAME}</name>
+    <name>Uninstall ${PRODUCT_SHORT_NAME}</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
 </shortcut>
@@ -1068,11 +1066,11 @@ Linux:
 
 ```xml
 <shortcut>
-    <comment>Launch ${PROJECT_SHORT_NAME} in Debug Mode</comment>
+    <comment>Launch ${PRODUCT_SHORT_NAME} in Debug Mode</comment>
     <exec>${installdir}/${WINDOWS_EXECUTABLE}</exec>
     <execArgs>--debug --verbose</execArgs>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME} (Debug)</name>
+    <name>${PRODUCT_SHORT_NAME} (Debug)</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <runInTerminal>1</runInTerminal>
@@ -1085,10 +1083,10 @@ Linux:
 <shortcutList>
     <!-- Main Application (Windows) -->
     <shortcut>
-        <comment>Launch ${PROJECT_SHORT_NAME}</comment>
+        <comment>Launch ${PRODUCT_SHORT_NAME}</comment>
         <exec>${installdir}/${WINDOWS_EXECUTABLE}</exec>
         <icon>${installdir}/${WINDOWS_ICON}</icon>
-        <name>${PROJECT_SHORT_NAME}</name>
+        <name>${PRODUCT_SHORT_NAME}</name>
         <platforms>windows</platforms>
         <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
         <runInTerminal>0</runInTerminal>
@@ -1099,19 +1097,19 @@ Linux:
 
     <!-- Main Application (Linux) -->
     <shortcut>
-        <comment>Launch ${PROJECT_SHORT_NAME}</comment>
+        <comment>Launch ${PRODUCT_SHORT_NAME}</comment>
         <exec>${installdir}/${LINUX_EXECUTABLE}</exec>
         <icon>${installdir}/${LINUX_ICON}</icon>
-        <name>${PROJECT_SHORT_NAME}</name>
+        <name>${PRODUCT_SHORT_NAME}</name>
         <platforms>linux linux-x64</platforms>
         <runInTerminal>0</runInTerminal>
     </shortcut>
 
     <!-- Solver Tool (Windows, conditional) -->
     <shortcut>
-        <comment>Launch ${PROJECT_SHORT_NAME} Solver</comment>
+        <comment>Launch ${PRODUCT_SHORT_NAME} Solver</comment>
         <exec>${installdir}/solver/solver.exe</exec>
-        <name>${PROJECT_SHORT_NAME} Solver</name>
+        <name>${PRODUCT_SHORT_NAME} Solver</name>
         <platforms>windows</platforms>
         <runInTerminal>1</runInTerminal>
         <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
@@ -1125,9 +1123,9 @@ Linux:
 
     <!-- Documentation (Windows, conditional) -->
     <shortcut>
-        <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+        <comment>View ${PRODUCT_SHORT_NAME} Documentation</comment>
         <exec>${installdir}/docs/index.html</exec>
-        <name>${PROJECT_SHORT_NAME} Documentation</name>
+        <name>${PRODUCT_SHORT_NAME} Documentation</name>
         <platforms>windows</platforms>
         <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
         <ruleList>
@@ -1140,10 +1138,10 @@ Linux:
 
     <!-- Documentation (Linux, conditional) -->
     <shortcut>
-        <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+        <comment>View ${PRODUCT_SHORT_NAME} Documentation</comment>
         <exec>xdg-open</exec>
         <execArgs>${installdir}/docs/index.html</execArgs>
-        <name>${PROJECT_SHORT_NAME} Documentation</name>
+        <name>${PRODUCT_SHORT_NAME} Documentation</name>
         <platforms>linux linux-x64</platforms>
         <ruleList>
             <componentTest>
@@ -1155,9 +1153,9 @@ Linux:
 
     <!-- Uninstaller (Windows) -->
     <shortcut>
-        <comment>Uninstall ${PROJECT_SHORT_NAME}</comment>
+        <comment>Uninstall ${PRODUCT_SHORT_NAME}</comment>
         <exec>${installdir}/${UNINSTALLER_NAME}.exe</exec>
-        <name>Uninstall ${PROJECT_SHORT_NAME}</name>
+        <name>Uninstall ${PRODUCT_SHORT_NAME}</name>
         <platforms>windows</platforms>
         <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     </shortcut>
@@ -1169,10 +1167,10 @@ Linux:
 The template automatically creates Linux shell aliases when `INSTALL_LINUX_ALIASES=1`. These are added to `~/.bash_aliases`:
 
 **Automatically Created Aliases:**
-- `${PROJECT_SHORT_NAME}` → Launch application
-- `${PROJECT_SHORT_NAME}-help` → Show help
-- `${PROJECT_SHORT_NAME}-config` → Open configuration
-- `cd-${PROJECT_SHORT_NAME}` → Navigate to install directory
+- `${PRODUCT_SHORT_NAME}` → Launch application
+- `${PRODUCT_SHORT_NAME}-help` → Show help
+- `${PRODUCT_SHORT_NAME}-config` → Open configuration
+- `cd-${PRODUCT_SHORT_NAME}` → Navigate to install directory
 
 Example for a product named "MyApp":
 ```bash
@@ -1245,7 +1243,7 @@ done
 # Override specific variables without modifying variables.xml
 builder build installer-template.xml \
     --setvars products/my-product/variables.xml \
-    --setvars PROJECT_VERSION=2.0.0 \
+    --setvars PRODUCT_VERSION=2.0.0 \
     --setvars VENDOR_NAME="New Company Name"
 ```
 
@@ -1280,20 +1278,20 @@ Choose the pattern that fits your needs in `variables.xml`:
 <!-- Pattern 1: Simple (no vendor folder) -->
 <!-- Windows: C:\Program Files\MyApp -->
 <!-- Linux: /opt/MyApp -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${PRODUCT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 
 <!-- Pattern 2: With vendor folder (RECOMMENDED) -->
 <!-- Windows: C:\Program Files\YourCompany\MyApp -->
 <!-- Linux: /opt/YourCompany/MyApp -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PRODUCT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 
 <!-- Pattern 3: With version (for side-by-side installs) -->
 <!-- Windows: C:\Program Files\YourCompany\MyApp\1.0.0 -->
 <!-- Linux: /opt/YourCompany/MyApp/1.0.0 -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PRODUCT_SHORT_NAME}/${PRODUCT_VERSION}</DEFAULT_INSTALL_DIR>
 
 <!-- Pattern 4: Custom path -->
-<DEFAULT_INSTALL_DIR>C:\MyApps\${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>C:\MyApps\${PRODUCT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 ```
 
 ### Start Menu Folder Structure
@@ -1302,13 +1300,13 @@ Control Windows Start Menu organization:
 
 ```xml
 <!-- Single level: Start Menu → MyApp → shortcuts -->
-<WINDOWS_START_MENU_FOLDER>${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 
 <!-- With vendor (RECOMMENDED): Start Menu → YourCompany → MyApp → shortcuts -->
-<WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 
 <!-- Multi-level: Start Menu → Engineering → YourCompany → MyApp → shortcuts -->
-<WINDOWS_START_MENU_FOLDER>Engineering\${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>Engineering\${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 ```
 
 ### Directory Structure Best Practices
@@ -1476,7 +1474,7 @@ ls -la dist/
 **Cause:** Variable name typo or not defined.
 
 **Fix:**
-1. Check spelling: `${PROJECT_SHORT_NAME}` not `${PROJECT_SHORTNAME}`
+1. Check spelling: `${PRODUCT_SHORT_NAME}` not `${PROJECT_SHORTNAME}`
 2. Verify variable is defined in variables.xml
 3. Check that you're using `--setvars` in build command
 
@@ -1491,8 +1489,8 @@ ls -la dist/
 - Bad: `comp1`, `comp2`, `extra`
 
 **Shortcut Names:**
-- Use variables: `${PROJECT_SHORT_NAME}` not hardcoded "MyApp"
-- Be descriptive: `${PROJECT_SHORT_NAME} Solver` not just `Solver`
+- Use variables: `${PRODUCT_SHORT_NAME}` not hardcoded "MyApp"
+- Be descriptive: `${PRODUCT_SHORT_NAME} Solver` not just `Solver`
 
 ### 2. Component Organization
 
@@ -1518,7 +1516,7 @@ Always use `<componentTest>` for shortcuts that depend on optional components:
 <shortcut>
     <comment>Python Console</comment>
     <exec>${installdir}/python/python.exe</exec>
-    <name>${PROJECT_SHORT_NAME} Python</name>
+    <name>${PRODUCT_SHORT_NAME} Python</name>
     <platforms>windows</platforms>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
     <ruleList>
@@ -1550,7 +1548,7 @@ This prevents broken shortcuts if user didn't install the component.
 **Consider Version in Install Path:**
 ```xml
 <!-- Allows side-by-side installations -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}/${PROJECT_VERSION}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PRODUCT_SHORT_NAME}/${PRODUCT_VERSION}</DEFAULT_INSTALL_DIR>
 ```
 
 ### 6. Product Organization

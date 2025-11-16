@@ -85,12 +85,11 @@ Edit `products/test-app/variables.xml`:
 
 ```xml
 <!-- Essential Information -->
-<PROJECT_SHORT_NAME>TestApp</PROJECT_SHORT_NAME>
-<PROJECT_FULL_NAME>Test Application</PROJECT_FULL_NAME>
-<PROJECT_VERSION>1.0.0</PROJECT_VERSION>
+<PRODUCT_SHORT_NAME>TestApp</PRODUCT_SHORT_NAME>
+<PRODUCT_NAME>Test Application</PRODUCT_NAME>
+<PRODUCT_VERSION>1.0.0</PRODUCT_VERSION>
 <VENDOR_NAME>TestVendor</VENDOR_NAME>
-<PROJECT_SUMMARY>A simple test application</PROJECT_SUMMARY>
-<PROJECT_DESCRIPTION>This is a test application to verify the installer template works correctly.</PROJECT_DESCRIPTION>
+<PRODUCT_DESCRIPTION>A simple test application to verify the installer template works correctly.</PRODUCT_DESCRIPTION>
 
 <!-- Executables -->
 <WINDOWS_EXECUTABLE>testapp.exe</WINDOWS_EXECUTABLE>
@@ -111,14 +110,14 @@ Edit `products/test-app/variables.xml`:
 <README_FILE>${project_directory}/../../TestApp/README.txt</README_FILE>
 
 <!-- Installation Directory -->
-<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PROJECT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
+<DEFAULT_INSTALL_DIR>${platform_install_prefix}/${VENDOR_NAME}/${PRODUCT_SHORT_NAME}</DEFAULT_INSTALL_DIR>
 
 <!-- Installer Output -->
-<INSTALLER_FILENAME>testapp-${PROJECT_VERSION}-installer</INSTALLER_FILENAME>
+<INSTALLER_FILENAME>testapp-${PRODUCT_VERSION}-installer</INSTALLER_FILENAME>
 <ENABLED_PLATFORMS>windows linux-x64</ENABLED_PLATFORMS>
 
 <!-- Shortcuts -->
-<WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PROJECT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+<WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
 <CREATE_DESKTOP_SHORTCUTS>1</CREATE_DESKTOP_SHORTCUTS>
 <CREATE_START_MENU_SHORTCUTS>1</CREATE_START_MENU_SHORTCUTS>
 
@@ -130,7 +129,7 @@ Edit `products/test-app/variables.xml`:
 <DOCS_COMPONENT_DESCRIPTION>Documentation and help files</DOCS_COMPONENT_DESCRIPTION>
 
 <!-- Uninstaller -->
-<UNINSTALLER_NAME>uninstall-${PROJECT_SHORT_NAME}</UNINSTALLER_NAME>
+<UNINSTALLER_NAME>uninstall-${PRODUCT_SHORT_NAME}</UNINSTALLER_NAME>
 ```
 
 ### Step 5: Simplify Components for Testing

@@ -4,10 +4,10 @@
 
 <!-- Windows Main Application -->
 <shortcut>
-    <comment>Launch ${PROJECT_FULL_NAME}</comment>
+    <comment>Launch ${PRODUCT_NAME}</comment>
     <exec>${installdir}/bin/${WINDOWS_EXECUTABLE}</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME}</name>
+    <name>${PRODUCT_SHORT_NAME}</name>
     <path>${installdir}</path>
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
@@ -21,10 +21,10 @@
 
 <!-- Windows Solver -->
 <shortcut>
-    <comment>Run ${PROJECT_SHORT_NAME} Solver</comment>
+    <comment>Run ${PRODUCT_SHORT_NAME} Solver</comment>
     <exec>${installdir}/solver/solver.exe</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME} Solver</name>
+    <name>${PRODUCT_SHORT_NAME} Solver</name>
     <path>${installdir}/solver</path>
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
@@ -43,10 +43,10 @@
 
 <!-- Windows Python Console -->
 <shortcut>
-    <comment>Python scripting console for ${PROJECT_SHORT_NAME}</comment>
+    <comment>Python scripting console for ${PRODUCT_SHORT_NAME}</comment>
     <exec>${installdir}/python/python.exe</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME} Python</name>
+    <name>${PRODUCT_SHORT_NAME} Python</name>
     <path>${installdir}/python</path>
     <platforms>windows</platforms>
     <runInTerminal>1</runInTerminal>
@@ -65,10 +65,10 @@
 
 <!-- Windows Documentation -->
 <shortcut>
-    <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+    <comment>View ${PRODUCT_SHORT_NAME} Documentation</comment>
     <exec>${installdir}/documentation/index.html</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME} Documentation</name>
+    <name>${PRODUCT_SHORT_NAME} Documentation</name>
     <path>${installdir}/documentation</path>
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
@@ -87,10 +87,10 @@
 
 <!-- Windows Uninstaller -->
 <shortcut>
-    <comment>Uninstall ${PROJECT_FULL_NAME}</comment>
+    <comment>Uninstall ${PRODUCT_NAME}</comment>
     <exec>${installdir}/${UNINSTALLER_NAME}.exe</exec>
     <icon>${installdir}/${WINDOWS_ICON}</icon>
-    <name>Uninstall ${PROJECT_SHORT_NAME}</name>
+    <name>Uninstall ${PRODUCT_SHORT_NAME}</name>
     <path>${installdir}</path>
     <platforms>windows</platforms>
     <runInTerminal>0</runInTerminal>
@@ -103,10 +103,10 @@
 
 <!-- Linux Main Application -->
 <shortcut>
-    <comment>Launch ${PROJECT_FULL_NAME}</comment>
+    <comment>Launch ${PRODUCT_NAME}</comment>
     <exec>${installdir}/bin/${LINUX_EXECUTABLE}</exec>
     <icon>${installdir}/${LINUX_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME}</name>
+    <name>${PRODUCT_SHORT_NAME}</name>
     <path>${installdir}</path>
     <platforms>linux-x64</platforms>
     <runInTerminal>0</runInTerminal>
@@ -114,10 +114,10 @@
 
 <!-- Linux Documentation -->
 <shortcut>
-    <comment>View ${PROJECT_SHORT_NAME} Documentation</comment>
+    <comment>View ${PRODUCT_SHORT_NAME} Documentation</comment>
     <exec>xdg-open</exec>
     <icon>${installdir}/${LINUX_ICON}</icon>
-    <name>${PROJECT_SHORT_NAME} Documentation</name>
+    <name>${PRODUCT_SHORT_NAME} Documentation</name>
     <path>${installdir}/documentation</path>
     <platforms>linux-x64</platforms>
     <runInTerminal>0</runInTerminal>

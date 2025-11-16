@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
     <!-- Basic Project Information -->
-    <shortName>${PROJECT_SHORT_NAME}</shortName>
-    <fullName>${PROJECT_FULL_NAME}</fullName>
-    <version>${PROJECT_VERSION}</version>
+    <shortName>${PRODUCT_SHORT_NAME}</shortName>
+    <fullName>${PRODUCT_NAME}</fullName>
+    <version>${PRODUCT_VERSION}</version>
     <installerFilename>${INSTALLER_FILENAME}</installerFilename>
 
     <!-- Vendor Information -->
     <vendor>${VENDOR_NAME}</vendor>
-    <summary>${PROJECT_SUMMARY}</summary>
-    <description>${PROJECT_DESCRIPTION}</description>
+    <description>${PRODUCT_DESCRIPTION}</description>
 
     <!-- Installation Directory -->
     <defaultInstallationDirectory>${DEFAULT_INSTALL_DIR}</defaultInstallationDirectory>
@@ -46,7 +45,7 @@
                 <registrySet>
                     <key>${REGISTRY_KEY}</key>
                     <name>Version</name>
-                    <value>${PROJECT_VERSION}</value>
+                    <value>${PRODUCT_VERSION}</value>
                     <type>REG_SZ</type>
                 </registrySet>
                 <addDirectoryToPath>
@@ -70,7 +69,7 @@
                 </changePermissions>
                 <runProgram>
                     <program>ln</program>
-                    <programArguments>-sf ${installdir}/bin/${LINUX_EXECUTABLE} /usr/local/bin/${PROJECT_SHORT_NAME}</programArguments>
+                    <programArguments>-sf ${installdir}/bin/${LINUX_EXECUTABLE} /usr/local/bin/${PRODUCT_SHORT_NAME}</programArguments>
                     <abortOnError>0</abortOnError>
                     <showMessageOnError>0</showMessageOnError>
                 </runProgram>
@@ -90,23 +89,23 @@
                     <type>regexp</type>
                     <substitutionList>
                         <substitution>
-                            <pattern># ${PROJECT_FULL_NAME} Aliases.*# End ${PROJECT_FULL_NAME} Aliases</pattern>
+                            <pattern># ${PRODUCT_NAME} Aliases.*# End ${PRODUCT_NAME} Aliases</pattern>
                             <value></value>
                         </substitution>
                     </substitutionList>
                 </substitute>
                 <addTextToFile>
                     <path>${system.home}/.bash_aliases</path>
-                    <text># ${PROJECT_FULL_NAME} Aliases - Installed on ${date}
-# Launch ${PROJECT_FULL_NAME}
-alias ${PROJECT_SHORT_NAME}='${installdir}/${LINUX_EXECUTABLE}'
-# Show ${PROJECT_FULL_NAME} help
-alias ${PROJECT_SHORT_NAME}-help='${installdir}/${LINUX_EXECUTABLE} --help'
-# Configure ${PROJECT_FULL_NAME}
-alias ${PROJECT_SHORT_NAME}-config='${installdir}/${LINUX_EXECUTABLE} --settings'
-# Navigate to ${PROJECT_FULL_NAME} installation directory
-alias cd-${PROJECT_SHORT_NAME}='cd ${installdir}'
-# End ${PROJECT_FULL_NAME} Aliases
+                    <text># ${PRODUCT_NAME} Aliases - Installed on ${date}
+# Launch ${PRODUCT_NAME}
+alias ${PRODUCT_SHORT_NAME}='${installdir}/${LINUX_EXECUTABLE}'
+# Show ${PRODUCT_NAME} help
+alias ${PRODUCT_SHORT_NAME}-help='${installdir}/${LINUX_EXECUTABLE} --help'
+# Configure ${PRODUCT_NAME}
+alias ${PRODUCT_SHORT_NAME}-config='${installdir}/${LINUX_EXECUTABLE} --settings'
+# Navigate to ${PRODUCT_NAME} installation directory
+alias cd-${PRODUCT_SHORT_NAME}='cd ${installdir}'
+# End ${PRODUCT_NAME} Aliases
 </text>
                     <append>1</append>
                 </addTextToFile>
@@ -119,10 +118,10 @@ To use the aliases immediately, run:
 Or restart your terminal.
 
 Available aliases:
-  ${PROJECT_SHORT_NAME}         - Launch the application
-  ${PROJECT_SHORT_NAME}-help    - Show help
-  ${PROJECT_SHORT_NAME}-config  - Open settings
-  cd-${PROJECT_SHORT_NAME}      - Go to install directory</text>
+  ${PRODUCT_SHORT_NAME}         - Launch the application
+  ${PRODUCT_SHORT_NAME}-help    - Show help
+  ${PRODUCT_SHORT_NAME}-config  - Open settings
+  cd-${PRODUCT_SHORT_NAME}      - Go to install directory</text>
                     <title>Linux Aliases Installed</title>
                 </showInfo>
             </actionList>
@@ -160,7 +159,7 @@ Available aliases:
         <actionGroup>
             <actionList>
                 <deleteFile>
-                    <path>/usr/local/bin/${PROJECT_SHORT_NAME}</path>
+                    <path>/usr/local/bin/${PRODUCT_SHORT_NAME}</path>
                 </deleteFile>
             </actionList>
             <ruleList>
@@ -177,7 +176,7 @@ Available aliases:
         <directoryParameter>
             <name>installdir</name>
             <description>Installation Directory</description>
-            <explanation>Select the directory where ${PROJECT_FULL_NAME} will be installed</explanation>
+            <explanation>Select the directory where ${PRODUCT_NAME} will be installed</explanation>
             <value>${DEFAULT_INSTALL_DIR}</value>
             <default>${DEFAULT_INSTALL_DIR}</default>
             <allowEmptyValue>0</allowEmptyValue>
@@ -192,7 +191,7 @@ Available aliases:
         <booleanParameter>
             <name>add_to_path</name>
             <description>Add to System PATH</description>
-            <explanation>Add ${PROJECT_SHORT_NAME} to the system PATH environment variable</explanation>
+            <explanation>Add ${PRODUCT_SHORT_NAME} to the system PATH environment variable</explanation>
             <value>${ADD_TO_PATH_DEFAULT}</value>
             <default>${ADD_TO_PATH_DEFAULT}</default>
             <ask>1</ask>
@@ -222,7 +221,7 @@ Available aliases:
             <createUninstaller>1</createUninstaller>
             <uninstallerName>${UNINSTALLER_NAME}</uninstallerName>
             <uninstallerIcon>${WINDOWS_ICON}</uninstallerIcon>
-            <uninstallDisplayName>${PROJECT_FULL_NAME}</uninstallDisplayName>
+            <uninstallDisplayName>${PRODUCT_NAME}</uninstallDisplayName>
             <uninstallDisplayIcon>${installdir}/${WINDOWS_ICON}</uninstallDisplayIcon>
             <requestUninstallerElevation>1</requestUninstallerElevation>
             <installElevationRequired>1</installElevationRequired>
@@ -281,9 +280,9 @@ Available aliases:
         <!-- Custom Welcome Page with System Information Button -->
         <customWelcomePage>
             <name>welcome</name>
-            <title>${PROJECT_FULL_NAME} Installation</title>
-            <description>Welcome to the ${PROJECT_FULL_NAME} Setup Wizard</description>
-            <explanation>This wizard will guide you through the installation of ${PROJECT_FULL_NAME}.
+            <title>${PRODUCT_NAME} Installation</title>
+            <description>Welcome to the ${PRODUCT_NAME} Setup Wizard</description>
+            <explanation>This wizard will guide you through the installation of ${PRODUCT_NAME}.
 
 Click "System Information" to view your system details, or click "Next" to continue with the installation.</explanation>
             <buttonList>
@@ -654,7 +653,7 @@ User Account Type: ${user_admin} admin privileges</text>
             <name>destinationfolder</name>
             <title>Destination Folder</title>
             <description>Choose Install Location</description>
-            <explanation>Setup will install ${PROJECT_FULL_NAME} in the following folder.
+            <explanation>Setup will install ${PRODUCT_NAME} in the following folder.
 
 To install in a different folder, click Change and select another folder. Click Next to continue.</explanation>
             <destination>${installdir}</destination>
@@ -668,7 +667,7 @@ To install in a different folder, click Change and select another folder. Click 
                     <actionList>
                         <chooseDirectory>
                             <title>Select Installation Folder</title>
-                            <explanation>Choose the folder where you want to install ${PROJECT_FULL_NAME}</explanation>
+                            <explanation>Choose the folder where you want to install ${PRODUCT_NAME}</explanation>
                             <variable>installdir</variable>
                             <default>${installdir}</default>
                             <mustExist>0</mustExist>
@@ -747,7 +746,7 @@ ${component_description}</componentListHelpText>
                     <actionList>
                         <chooseDirectory>
                             <title>Select Installation Folder</title>
-                            <explanation>Choose the folder where you want to install ${PROJECT_FULL_NAME}</explanation>
+                            <explanation>Choose the folder where you want to install ${PRODUCT_NAME}</explanation>
                             <variable>installdir</variable>
                             <default>${installdir}</default>
                             <mustExist>0</mustExist>
@@ -818,7 +817,7 @@ Required Space for Selected Features: ${installation_size} MB</text>
                             <title>Custom Setup Help</title>
                             <text>Custom Setup Help
 
-You can customize which features of ${PROJECT_FULL_NAME} to install.
+You can customize which features of ${PRODUCT_NAME} to install.
 
 How to use this page:
 - Click on a component icon to select or deselect it
@@ -865,9 +864,9 @@ Selected Components:</summaryText>
         <!-- Installing Page -->
         <installationPage>
             <name>installing</name>
-            <title>Installing ${PROJECT_FULL_NAME}</title>
+            <title>Installing ${PRODUCT_NAME}</title>
             <description>Installation in Progress</description>
-            <explanation>Please wait while the Setup Wizard installs ${PROJECT_FULL_NAME}. This may take several minutes.</explanation>
+            <explanation>Please wait while the Setup Wizard installs ${PRODUCT_NAME}. This may take several minutes.</explanation>
             <showProgressBar>1</showProgressBar>
             <showProgressText>1</showProgressText>
             <abortOnError>0</abortOnError>
@@ -879,7 +878,7 @@ Selected Components:</summaryText>
             <name>installationinterrupted</name>
             <title>Installation Interrupted</title>
             <description>Setup was interrupted</description>
-            <explanation>Setup was interrupted before ${PROJECT_FULL_NAME} could be completely installed.
+            <explanation>Setup was interrupted before ${PRODUCT_NAME} could be completely installed.
 
 Your system has not been modified. To install this program at a later time, run Setup again.
 
