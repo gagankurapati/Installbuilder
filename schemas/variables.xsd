@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="variables">
+        <xs:complexType>
+            <xs:all>
+                <!-- REQUIRED: Product Information -->
+                <xs:element name="PRODUCT_SHORT_NAME" type="xs:string"/>
+                <xs:element name="PRODUCT_NAME" type="xs:string"/>
+                <xs:element name="PRODUCT_VERSION" type="xs:string"/>
+                <xs:element name="VENDOR_NAME" type="xs:string"/>
+
+                <!-- OPTIONAL: Product Description -->
+                <xs:element name="PRODUCT_DESCRIPTION" type="xs:string" minOccurs="0"/>
+
+                <!-- REQUIRED: Executables -->
+                <xs:element name="WINDOWS_EXECUTABLE" type="xs:string"/>
+                <xs:element name="WINDOWS_ICON" type="xs:string"/>
+                <xs:element name="LINUX_EXECUTABLE" type="xs:string"/>
+                <xs:element name="LINUX_ICON" type="xs:string"/>
+
+                <!-- REQUIRED: Source File Locations -->
+                <xs:element name="SOURCE_DIR" type="xs:string"/>
+                <xs:element name="PLATFORM_SPECIFIC_DIR" type="xs:string" minOccurs="0"/>
+                <xs:element name="DOCS_DIR" type="xs:string" minOccurs="0"/>
+
+                <!-- REQUIRED: External Files -->
+                <xs:element name="COMPONENTS_FILE" type="xs:string"/>
+                <xs:element name="SHORTCUTS_FILE" type="xs:string"/>
+
+                <!-- REQUIRED: License and Legal -->
+                <xs:element name="LICENSE_FILE" type="xs:string"/>
+                <xs:element name="PRIVACY_NOTICE_FILE" type="xs:string" minOccurs="0"/>
+                <xs:element name="SPLASH_IMAGE" type="xs:string" minOccurs="0"/>
+                <xs:element name="README_FILE" type="xs:string" minOccurs="0"/>
+
+                <!-- REQUIRED: Installation -->
+                <xs:element name="DEFAULT_INSTALL_DIR" type="xs:string"/>
+
+                <!-- REQUIRED: Installer Output -->
+                <xs:element name="INSTALLER_FILENAME" type="xs:string"/>
+                <xs:element name="ENABLED_PLATFORMS" type="xs:string"/>
+
+                <!-- OPTIONAL: Windows Shortcuts -->
+                <xs:element name="WINDOWS_START_MENU_FOLDER" type="xs:string" minOccurs="0"/>
+                <xs:element name="CREATE_DESKTOP_SHORTCUTS" type="booleanType" minOccurs="0"/>
+                <xs:element name="CREATE_START_MENU_SHORTCUTS" type="booleanType" minOccurs="0"/>
+
+                <!-- OPTIONAL: Linux Integration -->
+                <xs:element name="INSTALL_LINUX_ALIASES" type="booleanType" minOccurs="0"/>
+                <xs:element name="LINUX_ALIAS_FILE" type="xs:string" minOccurs="0"/>
+
+                <!-- OPTIONAL: Component Descriptions -->
+                <xs:element name="MAIN_COMPONENT_DESCRIPTION" type="xs:string" minOccurs="0"/>
+                <xs:element name="DOCS_COMPONENT_DESCRIPTION" type="xs:string" minOccurs="0"/>
+
+                <!-- OPTIONAL: Windows Registry -->
+                <xs:element name="REGISTRY_KEY" type="xs:string" minOccurs="0"/>
+
+                <!-- OPTIONAL: Windows PATH -->
+                <xs:element name="ADD_TO_PATH_DEFAULT" type="booleanType" minOccurs="0"/>
+                <xs:element name="ADD_TO_PATH_POSITION" type="pathPositionType" minOccurs="0"/>
+
+                <!-- OPTIONAL: Uninstaller -->
+                <xs:element name="UNINSTALLER_NAME" type="xs:string" minOccurs="0"/>
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Custom type for boolean values (0 or 1) -->
+    <xs:simpleType name="booleanType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- Custom type for PATH position -->
+    <xs:simpleType name="pathPositionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="beginning"/>
+            <xs:enumeration value="end"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

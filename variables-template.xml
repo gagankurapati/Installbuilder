@@ -9,12 +9,6 @@
     <VENDOR_NAME>Your Company Name</VENDOR_NAME>
     <PRODUCT_DESCRIPTION>A detailed description of what your application does and its key features.</PRODUCT_DESCRIPTION>
 
-    <!-- EXECUTABLES -->
-    <WINDOWS_EXECUTABLE>myapp.exe</WINDOWS_EXECUTABLE>
-    <WINDOWS_ICON>myapp.ico</WINDOWS_ICON>
-    <LINUX_EXECUTABLE>myapp</LINUX_EXECUTABLE>
-    <LINUX_ICON>myapp.png</LINUX_ICON>
-
     <!-- SOURCE FILE LOCATIONS -->
     <SOURCE_DIR>${project_directory}/dist</SOURCE_DIR>
     <PLATFORM_SPECIFIC_DIR>common</PLATFORM_SPECIFIC_DIR>
@@ -42,27 +36,43 @@
     <INSTALLER_FILENAME>myapp-installer-${PRODUCT_VERSION}</INSTALLER_FILENAME>
     <ENABLED_PLATFORMS>windows linux-x64</ENABLED_PLATFORMS>
 
-    <!-- WINDOWS SHORTCUTS -->
-    <WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
-    <CREATE_DESKTOP_SHORTCUTS>1</CREATE_DESKTOP_SHORTCUTS>
-    <CREATE_START_MENU_SHORTCUTS>1</CREATE_START_MENU_SHORTCUTS>
-
-    <!-- LINUX INTEGRATION -->
-    <INSTALL_LINUX_ALIASES>1</INSTALL_LINUX_ALIASES>
-    <LINUX_ALIAS_FILE>~/.bash_aliases</LINUX_ALIAS_FILE>
-
     <!-- COMPONENT DESCRIPTIONS -->
     <MAIN_COMPONENT_DESCRIPTION>Main application files (required)</MAIN_COMPONENT_DESCRIPTION>
     <DOCS_COMPONENT_DESCRIPTION>Documentation and user guides (optional)</DOCS_COMPONENT_DESCRIPTION>
 
-    <!-- WINDOWS REGISTRY -->
+    <!-- UNINSTALLER -->
+    <UNINSTALLER_NAME>uninstall-${PRODUCT_SHORT_NAME}</UNINSTALLER_NAME>
+
+    <!-- ============================================================================ -->
+    <!-- =                    WINDOWS-SPECIFIC VARIABLES                            = -->
+    <!-- ============================================================================ -->
+
+    <!-- Windows Executables -->
+    <WINDOWS_EXECUTABLE>myapp.exe</WINDOWS_EXECUTABLE>
+    <WINDOWS_ICON>myapp.ico</WINDOWS_ICON>
+
+    <!-- Windows Shortcuts -->
+    <WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+    <CREATE_DESKTOP_SHORTCUTS>1</CREATE_DESKTOP_SHORTCUTS>
+    <CREATE_START_MENU_SHORTCUTS>1</CREATE_START_MENU_SHORTCUTS>
+
+    <!-- Windows Registry -->
     <REGISTRY_KEY>HKEY_LOCAL_MACHINE\Software\${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</REGISTRY_KEY>
 
-    <!-- WINDOWS PATH -->
+    <!-- Windows PATH -->
     <ADD_TO_PATH_DEFAULT>1</ADD_TO_PATH_DEFAULT>
     <ADD_TO_PATH_POSITION>end</ADD_TO_PATH_POSITION>
 
-    <!-- UNINSTALLER -->
-    <UNINSTALLER_NAME>uninstall-${PRODUCT_SHORT_NAME}</UNINSTALLER_NAME>
+    <!-- ============================================================================ -->
+    <!-- =                     LINUX-SPECIFIC VARIABLES                             = -->
+    <!-- ============================================================================ -->
+
+    <!-- Linux Executables -->
+    <LINUX_EXECUTABLE>myapp</LINUX_EXECUTABLE>
+    <LINUX_ICON>myapp.png</LINUX_ICON>
+
+    <!-- Linux Integration -->
+    <INSTALL_LINUX_ALIASES>1</INSTALL_LINUX_ALIASES>
+    <LINUX_ALIAS_FILE>~/.bash_aliases</LINUX_ALIAS_FILE>
 
 </variables>

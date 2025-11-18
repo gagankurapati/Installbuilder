@@ -8,20 +8,9 @@
     <selected>1</selected>
     <show>1</show>
     <folderList>
-        <!-- Core files -->
-        <folder>
-            <description>Core Files</description>
-            <destination>${installdir}</destination>
-            <name>corefiles</name>
-            <platforms>all</platforms>
-            <distributionFileList>
-                <distributionDirectory>
-                    <origin>${SOURCE_DIR}/common</origin>
-                </distributionDirectory>
-            </distributionFileList>
-        </folder>
-
-        <!-- Windows-specific core files -->
+        <!-- ======================================== -->
+        <!-- =       WINDOWS-SPECIFIC FILES         = -->
+        <!-- ======================================== -->
         <folder>
             <description>Windows Core Files</description>
             <destination>${installdir}</destination>
@@ -34,7 +23,9 @@
             </distributionFileList>
         </folder>
 
-        <!-- Linux-specific core files -->
+        <!-- ======================================== -->
+        <!-- =        LINUX-SPECIFIC FILES          = -->
+        <!-- ======================================== -->
         <folder>
             <description>Linux Core Files</description>
             <destination>${installdir}</destination>
@@ -66,7 +57,7 @@
             <description>Binary Files</description>
             <destination>${installdir}/bin</destination>
             <name>binfiles</name>
-            <platforms>all</platforms>
+            <platforms>windows linux-x64</platforms>
             <distributionFileList>
                 <distributionDirectory>
                     <origin>${SOURCE_DIR}/bin</origin>
@@ -88,7 +79,7 @@
             <description>Documentation Files</description>
             <destination>${installdir}/documentation</destination>
             <name>docfiles</name>
-            <platforms>all</platforms>
+            <platforms>windows linux-x64</platforms>
             <distributionFileList>
                 <distributionDirectory>
                     <origin>${SOURCE_DIR}/documentation</origin>
@@ -110,7 +101,7 @@
             <description>Solver Files</description>
             <destination>${installdir}/solver</destination>
             <name>solverfiles</name>
-            <platforms>all</platforms>
+            <platforms>windows linux-x64</platforms>
             <distributionFileList>
                 <distributionDirectory>
                     <origin>${SOURCE_DIR}/solver</origin>
@@ -132,7 +123,7 @@
             <description>Python Files</description>
             <destination>${installdir}/python</destination>
             <name>pythonfiles</name>
-            <platforms>all</platforms>
+            <platforms>windows linux-x64</platforms>
             <distributionFileList>
                 <distributionDirectory>
                     <origin>${SOURCE_DIR}/python</origin>
@@ -154,7 +145,7 @@
             <description>Intel MPI Files</description>
             <destination>${installdir}/intelmpi</destination>
             <name>intelmpifiles</name>
-            <platforms>all</platforms>
+            <platforms>windows linux-x64</platforms>
             <distributionFileList>
                 <distributionDirectory>
                     <origin>${SOURCE_DIR}/intelmpi</origin>

@@ -2,6 +2,10 @@
 <!-- Product A Shortcuts -->
 <shortcutList>
 
+<!-- ============================================================================ -->
+<!-- =                        WINDOWS SHORTCUTS                                 = -->
+<!-- ============================================================================ -->
+
 <!-- Windows Main Application -->
 <shortcut>
     <comment>Launch ${PRODUCT_NAME}</comment>
@@ -100,6 +104,10 @@
     <programGroupAllUsers>1</programGroupAllUsers>
     <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
 </shortcut>
+
+<!-- ============================================================================ -->
+<!-- =                         LINUX SHORTCUTS                                  = -->
+<!-- ============================================================================ -->
 
 <!-- Linux Main Application -->
 <shortcut>
