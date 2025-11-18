@@ -406,6 +406,114 @@ This makes it easy to find and modify platform-specific sections.
 
 ---
 
+## Related Tasks
+
+### Development Tasks
+
+- [ ] **Set up new product installer**
+  - [ ] Create product directory structure
+  - [ ] Configure variables.xml with product details
+  - [ ] Define components in components.xml
+  - [ ] Create shortcuts in shortcuts.xml
+  - [ ] Run validation script
+  - [ ] Test build on Windows
+  - [ ] Test build on Linux
+
+- [ ] **Update product version**
+  - [ ] Update `PRODUCT_VERSION` in variables.xml
+  - [ ] Update `INSTALLER_FILENAME` if version-specific
+  - [ ] Rebuild installers for all platforms
+  - [ ] Test installation/uninstallation
+
+- [ ] **Add new component to product**
+  - [ ] Add component definition in components.xml
+  - [ ] Add platform-specific folders (windows/linux-x64)
+  - [ ] Create shortcuts for new component
+  - [ ] Update component descriptions
+  - [ ] Validate XML files
+  - [ ] Test component installation
+
+### Maintenance Tasks
+
+- [ ] **Validate all XML files**
+  - [ ] Run `./validate.sh`
+  - [ ] Fix any XML well-formedness errors
+  - [ ] Fix XSD schema validation errors
+  - [ ] Verify all required variables defined
+  - [ ] Check file inclusions
+
+- [ ] **Update XSD schema**
+  - [ ] Add new elements to schemas/variables.xsd
+  - [ ] Set minOccurs for optional elements
+  - [ ] Define custom types if needed
+  - [ ] Validate existing variables.xml files
+
+- [ ] **Clean up project**
+  - [ ] Remove unused product directories
+  - [ ] Update documentation
+  - [ ] Verify all paths are correct
+  - [ ] Check for deprecated variables
+
+### Build Tasks
+
+- [ ] **Build Windows installer**
+  - [ ] Set project_directory path
+  - [ ] Set variablesFile path
+  - [ ] Run builder with --platform windows
+  - [ ] Verify output installer created
+  - [ ] Test installation on Windows
+
+- [ ] **Build Linux installer**
+  - [ ] Set project_directory path
+  - [ ] Set variablesFile path
+  - [ ] Run builder with --platform linux-x64
+  - [ ] Verify output installer created
+  - [ ] Test installation on Linux
+
+- [ ] **Release new version**
+  - [ ] Update all product versions
+  - [ ] Run validation on all products
+  - [ ] Build Windows installers
+  - [ ] Build Linux installers
+  - [ ] Test all installers
+  - [ ] Create release notes
+  - [ ] Tag release in git
+
+### Testing Tasks
+
+- [ ] **Test Windows installation**
+  - [ ] Run installer as administrator
+  - [ ] Verify files installed correctly
+  - [ ] Check Start Menu shortcuts
+  - [ ] Check Desktop shortcuts
+  - [ ] Verify PATH updated (if enabled)
+  - [ ] Test application launch
+  - [ ] Test uninstaller
+
+- [ ] **Test Linux installation**
+  - [ ] Run installer with appropriate permissions
+  - [ ] Verify files installed correctly
+  - [ ] Check desktop shortcuts
+  - [ ] Verify bash aliases (if enabled)
+  - [ ] Test application launch
+  - [ ] Test uninstaller
+
+### Documentation Tasks
+
+- [ ] **Update README**
+  - [ ] Add new products to Current Products table
+  - [ ] Update variables reference
+  - [ ] Add troubleshooting items
+  - [ ] Update build examples
+
+- [ ] **Create Confluence page**
+  - [ ] Copy README content
+  - [ ] Add team-specific information
+  - [ ] Add internal links
+  - [ ] Set page permissions
+
+---
+
 ## Troubleshooting
 
 ### Common Issues
