@@ -14,6 +14,7 @@ A modular XML-based framework for building cross-platform installers using Insta
 - [Adding a New Product](#adding-a-new-product)
 - [Validation](#validation)
 - [Current Products](#current-products)
+- [Silent/Unattended Installation](#silentunattended-installation)
 
 ---
 
@@ -511,6 +512,183 @@ This makes it easy to find and modify platform-specific sections.
   - [ ] Add team-specific information
   - [ ] Add internal links
   - [ ] Set page permissions
+
+---
+
+## Silent/Unattended Installation
+
+The installer supports multiple installation modes for automated deployments.
+
+### Installation Modes
+
+| Mode | Description | UI |
+|------|-------------|-----|
+| `gtk` | GTK graphical interface (Linux default) | Full GUI |
+| `qt` | Qt graphical interface (alternative) | Full GUI |
+| `text` | Text-based interactive mode | Terminal UI |
+| `unattended` | Silent installation | None |
+
+### Basic Silent Installation
+
+**Linux:**
+```bash
+# Basic silent install with defaults
+./product-installer.run --mode unattended
+
+# With custom installation directory
+./product-installer.run --mode unattended --prefix /opt/myapp
+
+# Accept license and specify directory
+./product-installer.run --mode unattended --accept-license --prefix /home/user/Keysight
+```
+
+**Windows:**
+```cmd
+# Basic silent install
+product-installer.exe --mode unattended
+
+# With custom directory
+product-installer.exe --mode unattended --prefix "C:\Program Files\MyApp"
+```
+
+### Command Line Options
+
+| Option | Description | Example |
+|--------|-------------|---------|
+| `--mode` | Installation mode | `--mode unattended` |
+| `--prefix` | Installation directory | `--prefix /opt/myapp` |
+| `--accept-license` | Accept license agreement | `--accept-license` |
+| `--debugtrace` | Enable debug output | `--debugtrace install.log` |
+| `--help` | Show all options | `--help` |
+
+### Complete Example
+
+```bash
+# Linux silent installation with all options
+./product-installer.run \
+    --mode unattended \
+    --accept-license \
+    --prefix /home/user/Keysight \
+    --debugtrace /tmp/install.log
+
+# Windows silent installation
+product-installer.exe ^
+    --mode unattended ^
+    --accept-license ^
+    --prefix "C:\Users\user\Keysight" ^
+    --debugtrace "C:\temp\install.log"
+```
+
+### Scripted Deployment
+
+**Linux deployment script:**
+```bash
+#!/bin/bash
+# deploy.sh
+
+INSTALLER="./product-installer.run"
+INSTALL_DIR="/opt/keysight/product"
+LOG_FILE="/tmp/product-install-$(date +%Y%m%d-%H%M%S).log"
+
+# Check if running as root (if required)
+if [ "$EUID" -ne 0 ]; then
+   echo "Please run as root"
+   exit 1
+fi
+
+# Run silent installation
+$INSTALLER \
+    --mode unattended \
+    --accept-license \
+    --prefix "$INSTALL_DIR" \
+    --debugtrace "$LOG_FILE"
+
+# Check installation result
+if [ $? -eq 0 ]; then
+    echo "Installation successful!"
+    echo "Installed to: $INSTALL_DIR"
+    echo "Log file: $LOG_FILE"
+else
+    echo "Installation failed! Check log: $LOG_FILE"
+    exit 1
+fi
+
+# Verify installation
+if [ -f "$INSTALL_DIR/bin/product" ]; then
+    echo "Installation verified."
+    $INSTALL_DIR/bin/product --version
+else
+    echo "Warning: Installation verification failed"
+    exit 1
+fi
+```
+
+### Return Codes
+
+| Code | Meaning |
+|------|---------|
+| `0` | Installation successful |
+| `1` | Installation failed |
+| `2` | User cancelled (text mode) |
+| `3` | Invalid arguments |
+
+### Checking Installation Status
+
+```bash
+# Check if installation succeeded
+./product-installer.run --mode unattended --prefix /opt/myapp
+if [ $? -eq 0 ]; then
+    echo "Installation completed successfully"
+else
+    echo "Installation failed"
+fi
+```
+
+### Text Mode (Interactive)
+
+For semi-automated installations with user confirmation:
+
+```bash
+# Interactive text mode (no GUI required)
+./product-installer.run --mode text
+```
+
+This mode:
+- Works over SSH
+- Displays all wizard pages in terminal
+- Allows user input for customization
+- Perfect for remote installations
+
+### Default Installation Directory
+
+If `--prefix` is not specified:
+- **Linux**: `${HOME}/Keysight` (user's home directory)
+- **Windows**: `C:\Program Files\Vendor\Product` (from `DEFAULT_INSTALL_DIR`)
+
+### Debugging Silent Installations
+
+Enable debug logging to troubleshoot issues:
+
+```bash
+# Linux with debug trace
+./product-installer.run \
+    --mode unattended \
+    --accept-license \
+    --prefix /opt/myapp \
+    --debugtrace /tmp/debug.log
+
+# View debug log
+tail -f /tmp/debug.log
+```
+
+### Best Practices
+
+1. **Always use `--accept-license`** in unattended mode
+2. **Specify absolute paths** for `--prefix`
+3. **Enable debug logging** for production deployments
+4. **Check return codes** in scripts
+5. **Verify installation** after completion
+6. **Use text mode** for interactive remote installations
 
 ---
 

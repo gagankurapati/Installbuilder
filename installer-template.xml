@@ -13,6 +13,14 @@
     <!-- Installation Directory -->
     <defaultInstallationDirectory>${DEFAULT_INSTALL_DIR}</defaultInstallationDirectory>
 
+    <!-- Linux-specific default installation directory -->
+    <platformOptionsList>
+        <platformOptions>
+            <platform>linux</platform>
+            <defaultInstallationDirectory>${system_home_directory}/Keysight</defaultInstallationDirectory>
+        </platformOptions>
+    </platformOptionsList>
+
     <!-- License Configuration -->
     <licenseFile>${LICENSE_FILE}</licenseFile>
 
@@ -181,11 +189,22 @@ Available aliases:
             <default>${DEFAULT_INSTALL_DIR}</default>
             <allowEmptyValue>0</allowEmptyValue>
             <ask>1</ask>
-            <cliOptionName>install-dir</cliOptionName>
+            <cliOptionName>prefix</cliOptionName>
             <mustBeWritable>1</mustBeWritable>
             <mustExist>0</mustExist>
             <width>40</width>
         </directoryParameter>
+
+        <!-- License acceptance parameter for unattended mode -->
+        <booleanParameter>
+            <name>license_accepted</name>
+            <description>Accept License</description>
+            <explanation>Accept the license agreement</explanation>
+            <value>0</value>
+            <default>0</default>
+            <ask>0</ask>
+            <cliOptionName>accept-license</cliOptionName>
+        </booleanParameter>
 
         <!-- Add to PATH option (Windows) -->
         <booleanParameter>
@@ -230,6 +249,8 @@ Available aliases:
         <!-- Linux Settings -->
         <linux>
             <allowComponentSelection>1</allowComponentSelection>
+            <createUninstaller>1</createUninstaller>
+            <uninstallerName>uninstall</uninstallerName>
         </linux>
     </platformSettings>
 
@@ -271,6 +292,10 @@ Available aliases:
         <language>en</language>
     </languageList>
 
+    <!-- Unattended/Silent Installation Support -->
+    <allowedModes>gtk qt text unattended</allowedModes>
+    <defaultUnattendedModeUI>none</defaultUnattendedModeUI>
+
     <!-- Splash Screen Configuration -->
     <splashImage>${SPLASH_IMAGE}</splashImage>
     <splashScreenShowProgressText>1</splashScreenShowProgressText>
@@ -281,10 +306,11 @@ Available aliases:
         <customWelcomePage>
             <name>welcome</name>
             <title>${PRODUCT_NAME} Installation</title>
-            <description>Welcome to the ${PRODUCT_NAME} Setup Wizard</description>
+            <description>Welcome to the ${PRODUCT_NAME} ${PRODUCT_VERSION} Setup Wizard</description>
             <explanation>This wizard will guide you through the installation of ${PRODUCT_NAME}.
 
 Click "System Information" to view your system details, or click "Next" to continue with the installation.</explanation>
+            <allowBack>0</allowBack>
             <buttonList>
                 <!-- System Information Button -->
                 <button>
@@ -559,7 +585,7 @@ User Account Type: ${user_admin} admin privileges</text>
             <name>license</name>
             <title>License Agreement</title>
             <description>End User License Agreement (EULA)</description>
-            <explanation>Please read the following license agreement carefully.</explanation>
+            <explanation>Please read the following license agreement carefully. You must accept the terms to continue.</explanation>
             <file>${LICENSE_FILE}</file>
             <showFileChooser>0</showFileChooser>
             <showAcceptRadioButton>1</showAcceptRadioButton>
@@ -567,6 +593,7 @@ User Account Type: ${user_admin} admin privileges</text>
             <acceptButtonText>I accept the terms in the license agreement</acceptButtonText>
             <declineButtonText>I do not accept the terms in the license agreement</declineButtonText>
             <defaultAcceptValue>0</defaultAcceptValue>
+            <allowBack>1</allowBack>
             <preShowPageActionList>
                 <!-- Set license_accepted to false by default -->
                 <setInstallerVariable>
@@ -660,6 +687,30 @@ To install in a different folder, click Change and select another folder. Click 
             <allowEmptyValue>0</allowEmptyValue>
             <mustBeWritable>1</mustBeWritable>
             <mustExist>0</mustExist>
+            <allowBack>1</allowBack>
+            <preShowPageActionList>
+                <!-- Linux: Ensure default directory is set to user's home/Keysight -->
+                <actionGroup>
+                    <actionList>
+                        <setInstallerVariable>
+                            <name>installdir</name>
+                            <value>${system_home_directory}/Keysight</value>
+                            <ruleList>
+                                <compareText>
+                                    <logic>equals</logic>
+                                    <text>${installdir}</text>
+                                    <value>${DEFAULT_INSTALL_DIR}</value>
+                                </compareText>
+                            </ruleList>
+                        </setInstallerVariable>
+                    </actionList>
+                    <ruleList>
+                        <platformTest>
+                            <type>linux</type>
+                        </platformTest>
+                    </ruleList>
+                </actionGroup>
+            </preShowPageActionList>
             <buttonList>
                 <!-- Change Button -->
                 <button>
@@ -689,6 +740,7 @@ Click on the icons in the tree below to change how features are installed.</expl
             <showSizes>1</showSizes>
             <allowEmptySelection>0</allowEmptySelection>
             <showAdvancedOptions>0</showAdvancedOptions>
+            <allowBack>1</allowBack>
             <componentListHelpText>Feature Description:
 
 ${component_description}</componentListHelpText>
@@ -853,6 +905,7 @@ Click "Next" to continue with the installation.</text>
 
 Click Next to begin the installation. If you want to review or change any settings, click Back.</explanation>
             <showSummary>1</showSummary>
+            <allowBack>1</allowBack>
             <summaryText>Setup Type: Custom
 
 Destination Location:
@@ -871,6 +924,41 @@ Selected Components:</summaryText>
             <showProgressText>1</showProgressText>
             <abortOnError>0</abortOnError>
             <enableRollbackOnError>1</enableRollbackOnError>
+            <preInstallationActionList>
+                <!-- Check if product is already installed -->
+                <actionGroup>
+                    <actionList>
+                        <setInstallerVariable>
+                            <name>already_installed</name>
+                            <value>0</value>
+                        </setInstallerVariable>
+                        <!-- Check if installation directory exists and has content -->
+                        <setInstallerVariable>
+                            <name>already_installed</name>
+                            <value>1</value>
+                            <ruleList>
+                                <fileTest>
+                                    <condition>exists</condition>
+                                    <path>${installdir}</path>
+                                </fileTest>
+                            </ruleList>
+                        </setInstallerVariable>
+                        <!-- Warn user if already installed -->
+                        <showWarning>
+                            <text>Warning: ${PRODUCT_NAME} appears to be already installed at:
+${installdir}
+
+The existing installation will be overwritten. Do you want to continue?</text>
+                            <title>Existing Installation Detected</title>
+                            <ruleList>
+                                <isTrue>
+                                    <value>${already_installed}</value>
+                                </isTrue>
+                            </ruleList>
+                        </showWarning>
+                    </actionList>
+                </actionGroup>
+            </preInstallationActionList>
         </installationPage>
 
         <!-- Installation Interrupted/Cancelled Page -->
@@ -886,6 +974,75 @@ Click Finish to exit the Setup Wizard.</explanation>
             <allowBack>0</allowBack>
             <allowCancel>0</allowCancel>
         </abortedInstallationPage>
+
+        <!-- Installation Complete Page -->
+        <completionPage>
+            <name>installationcomplete</name>
+            <title>Installation Complete</title>
+            <description>Setup Completed Successfully</description>
+            <explanation>${PRODUCT_NAME} has been successfully installed on your computer.
+
+Click Finish to exit the Setup Wizard.</explanation>
+            <allowBack>0</allowBack>
+            <allowCancel>0</allowCancel>
+            <postShowPageActionList>
+                <!-- Post-installation steps window for Linux -->
+                <actionGroup>
+                    <actionList>
+                        <showInfo>
+                            <title>Post-Installation Steps</title>
+                            <text>Post-Installation Steps for ${PRODUCT_NAME}
+========================================
+
+Installation completed successfully!
+
+Installation Location:
+${installdir}
+
+Next Steps:
+-----------
+
+1. Environment Setup (Optional):
+   To use ${PRODUCT_NAME} from any terminal, add the following to your shell profile:
+
+   For bash (~/.bashrc):
+   export PATH="${installdir}/bin:$PATH"
+
+   For zsh (~/.zshrc):
+   export PATH="${installdir}/bin:$PATH"
+
+   Then restart your terminal or run:
+   source ~/.bashrc  # or source ~/.zshrc
+
+2. Verify Installation:
+   Run the following command to verify installation:
+   ${installdir}/bin/${PRODUCT_SHORT_NAME} --version
+
+3. Documentation:
+   View documentation at:
+   ${installdir}/docs/
+
+4. Getting Started:
+   Launch ${PRODUCT_NAME} by running:
+   ${installdir}/bin/${PRODUCT_SHORT_NAME}
+
+5. Uninstall:
+   To uninstall ${PRODUCT_NAME}, run:
+   ${installdir}/uninstall
+
+For more information, visit the documentation or contact support.
+
+Thank you for installing ${PRODUCT_NAME}!</text>
+                        </showInfo>
+                    </actionList>
+                    <ruleList>
+                        <platformTest>
+                            <type>linux</type>
+                        </platformTest>
+                    </ruleList>
+                </actionGroup>
+            </postShowPageActionList>
+        </completionPage>
     </customPageList>
 
     <!-- Enable Back Button Throughout Installation -->
