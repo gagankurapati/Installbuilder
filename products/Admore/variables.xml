@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ADMORE 2024.0 Variables (Based on Legacy Linux-only, extended for Windows support) -->
+<variables>
+
+    <!-- ============================================================================ -->
+    <!-- =                      PRODUCT INFORMATION                                 = -->
+    <!-- ============================================================================ -->
+
+    <PRODUCT_SHORT_NAME>ADM</PRODUCT_SHORT_NAME>
+    <PRODUCT_NAME>ADMORE</PRODUCT_NAME>
+    <PRODUCT_VERSION>2024.0</PRODUCT_VERSION>
+    <VENDOR_NAME>ESI Group</VENDOR_NAME>
+    <PRODUCT_DESCRIPTION>ADMORE 2024.0 for Linux x64 and Windows distributions</PRODUCT_DESCRIPTION>
+
+    <!-- ============================================================================ -->
+    <!-- =                   PATH CONFIGURATION (Legacy Pattern)                    = -->
+    <!-- ============================================================================ -->
+
+    <!-- TODO: These will be set via command line parameters when building -->
+    <!-- Example: builder build ... --setvars BUILDSPACE=/path/to/build -->
+
+    <!-- Base paths (from legacy preBuildActionList) -->
+    <BUILDSPACE>${clbuildspace}</BUILDSPACE>
+    <PACKAGE>${clpackage}</PACKAGE>
+    <MASTERPATH>${clmasterpath}</MASTERPATH>
+    <PRODUCTCONFIGPATH>${clproductconfigpath}</PRODUCTCONFIGPATH>
+    <FLEXNETRUNTIME>${clflexnetruntimepath}</FLEXNETRUNTIME>
+
+    <!-- ============================================================================ -->
+    <!-- =                   SOURCE FILE LOCATIONS                                  = -->
+    <!-- ============================================================================ -->
+
+    <!-- Main source directory (uses BUILDSPACE and PACKAGE variables) -->
+    <SOURCE_DIR>${BUILDSPACE}/${PACKAGE}</SOURCE_DIR>
+
+    <!-- Scripts directory -->
+    <SCRIPTS_DIR>${MASTERPATH}/scripts</SCRIPTS_DIR>
+
+    <!-- ============================================================================ -->
+    <!-- =              COMPONENT AND SHORTCUT FILES                                = -->
+    <!-- ============================================================================ -->
+
+    <COMPONENTS_FILE>${project_directory}/products/Admore/components.xml</COMPONENTS_FILE>
+    <SHORTCUTS_FILE>${project_directory}/products/Admore/shortcuts.xml</SHORTCUTS_FILE>
+
+    <!-- ============================================================================ -->
+    <!-- =              LICENSE AND LEGAL FILES (From Legacy)                       = -->
+    <!-- ============================================================================ -->
+
+    <LICENSE_FILE>${MASTERPATH}/EULA.txt</LICENSE_FILE>
+
+    <!-- ============================================================================ -->
+    <!-- =              BRANDING IMAGES (From Legacy)                               = -->
+    <!-- ============================================================================ -->
+
+    <LEFT_IMAGE>${PRODUCTCONFIGPATH}/Res/ADM_Banner.png</LEFT_IMAGE>
+    <LOGO_IMAGE>${PRODUCTCONFIGPATH}/Res/VIPlatform.png</LOGO_IMAGE>
+    <SPLASH_IMAGE>${PRODUCTCONFIGPATH}/Res/ADM_Splash.png</SPLASH_IMAGE>
+    <WM_IMAGE>${PRODUCTCONFIGPATH}/Res/VIPlatform.png</WM_IMAGE>
+
+    <!-- ============================================================================ -->
+    <!-- =              INSTALLATION DIRECTORY                                      = -->
+    <!-- ============================================================================ -->
+
+    <!-- Legacy Linux default: ${platform_install_prefix}/ESIGroup -->
+    <!-- Legacy also checked env variable: ${env(PAMHOME)} -->
+    <DEFAULT_INSTALL_DIR>${platform_install_prefix}/ESIGroup</DEFAULT_INSTALL_DIR>
+    <ENV_INSTALL_DIR>PAMHOME</ENV_INSTALL_DIR>
+
+    <!-- ============================================================================ -->
+    <!-- =              INSTALLER OUTPUT                                            = -->
+    <!-- ============================================================================ -->
+
+    <INSTALLER_FILENAME>${PRODUCT_SHORT_NAME}-${PRODUCT_VERSION}-installer</INSTALLER_FILENAME>
+    <ENABLED_PLATFORMS>windows linux-x64</ENABLED_PLATFORMS>
+
+    <!-- ============================================================================ -->
+    <!-- =              COMPONENT DESCRIPTIONS                                      = -->
+    <!-- ============================================================================ -->
+
+    <MAIN_COMPONENT_DESCRIPTION>${PRODUCT_NAME} ${PRODUCT_VERSION}</MAIN_COMPONENT_DESCRIPTION>
+    <MAIN_COMPONENT_DETAILED>${PRODUCT_NAME} ${PRODUCT_VERSION} for Linux x64 and Windows distributions</MAIN_COMPONENT_DETAILED>
+
+    <FLEX_COMPONENT_DESCRIPTION>FLEXnet v11.19.4.1</FLEX_COMPONENT_DESCRIPTION>
+    <FLEX_COMPONENT_DETAILED>FLEXnet utilities (lmgrd, lmutil), ESI Group vendor daemon (pam_lmd) and Custom Vendor ID utility</FLEX_COMPONENT_DETAILED>
+
+    <!-- ============================================================================ -->
+    <!-- =              UNINSTALLER                                                 = -->
+    <!-- ============================================================================ -->
+
+    <UNINSTALLER_DIR>${installdir}/Uninstall_ESI_Products</UNINSTALLER_DIR>
+    <UNINSTALLER_NAME>uninstall_ADMORE-${PRODUCT_VERSION}</UNINSTALLER_NAME>
+
+    <!-- ============================================================================ -->
+    <!-- =              ADVANCED INSTALLER SETTINGS (From Legacy)                   = -->
+    <!-- ============================================================================ -->
+
+    <ALLOW_COMPONENT_SELECTION>1</ALLOW_COMPONENT_SELECTION>
+    <ENABLE_ROLLBACK>1</ENABLE_ROLLBACK>
+    <ENABLE_TIMESTAMP>1</ENABLE_TIMESTAMP>
+    <COMPRESSION_ALGORITHM>lzma</COMPRESSION_ALGORITHM>
+    <SAVE_RELATIVE_PATHS>1</SAVE_RELATIVE_PATHS>
+
+    <!-- ============================================================================ -->
+    <!-- =              VERSION FILE MANAGEMENT (From Legacy)                       = -->
+    <!-- ============================================================================ -->
+
+    <ENABLE_VERSION_FILE>1</ENABLE_VERSION_FILE>
+    <VERSION_FILE_PATH>${installdir}/VERSION</VERSION_FILE_PATH>
+    <VERSION_FILE_ENTRY>${PRODUCT_NAME} ${PRODUCT_VERSION}</VERSION_FILE_ENTRY>
+
+    <!-- ============================================================================ -->
+    <!-- =              CUSTOM LANGUAGE FILES (From Legacy)                         = -->
+    <!-- ============================================================================ -->
+
+    <CUSTOM_LANGUAGE_CODE>en</CUSTOM_LANGUAGE_CODE>
+    <CUSTOM_LANGUAGE_FILE>ib-custom-en.lng</CUSTOM_LANGUAGE_FILE>
+
+    <!-- ============================================================================ -->
+    <!-- =                    LINUX-SPECIFIC SETTINGS                               = -->
+    <!-- ============================================================================ -->
+    <!-- Legacy ADMORE was Linux-only, these settings are from the legacy XML -->
+
+    <!-- Linux Executables -->
+    <LINUX_EXECUTABLE>admore</LINUX_EXECUTABLE>
+    <LINUX_ICON>admore.png</LINUX_ICON>
+
+    <!-- Linux Integration -->
+    <INSTALL_LINUX_ALIASES>1</INSTALL_LINUX_ALIASES>
+    <LINUX_ALIAS_FILE>~/.bash_aliases</LINUX_ALIAS_FILE>
+
+    <!-- Linux Integration Scripts (From Legacy) -->
+    <LINUX_CUSTOMIZATION_SCRIPT>pamcust.sh</LINUX_CUSTOMIZATION_SCRIPT>
+    <LINUX_LICENSE_INSTALL_SCRIPT>Paminst-gui.sh</LINUX_LICENSE_INSTALL_SCRIPT>
+
+    <!-- Linux Post-Installation Message (From Legacy) -->
+    <LINUX_POST_INSTALL_TITLE>Post-Installation Steps</LINUX_POST_INSTALL_TITLE>
+    <LINUX_POST_INSTALL_MESSAGE>The Installation Wizard has finished installing:
+${PRODUCT_NAME} ${PRODUCT_VERSION} on your computer
+and will now exit.
+You will then be able to customize your environment and/or
+install your license, using the supplied scripts.
+
+To customize your environment using pamcust.sh
+execute these commands:
+    1. cd ${installdir}
+    2. ./pamcust.sh
+    3. follow the prompts
+
+To install your license using Paminst-gui.sh
+execute these commands:
+    1. cd ${installdir}
+    2. ./Paminst-gui.sh lic
+    3. follow the prompts
+</LINUX_POST_INSTALL_MESSAGE>
+
+    <!-- ============================================================================ -->
+    <!-- =                    WINDOWS-SPECIFIC SETTINGS                             = -->
+    <!-- ============================================================================ -->
+    <!-- Windows support added for future cross-platform compatibility -->
+
+    <!-- Windows Executables -->
+    <WINDOWS_EXECUTABLE>admore.exe</WINDOWS_EXECUTABLE>
+    <WINDOWS_ICON>admore.ico</WINDOWS_ICON>
+
+    <!-- Windows Shortcuts -->
+    <WINDOWS_START_MENU_FOLDER>${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</WINDOWS_START_MENU_FOLDER>
+    <CREATE_DESKTOP_SHORTCUTS>1</CREATE_DESKTOP_SHORTCUTS>
+    <CREATE_START_MENU_SHORTCUTS>1</CREATE_START_MENU_SHORTCUTS>
+
+    <!-- Windows Registry -->
+    <REGISTRY_KEY>HKEY_LOCAL_MACHINE\Software\${VENDOR_NAME}\${PRODUCT_SHORT_NAME}</REGISTRY_KEY>
+
+    <!-- Windows PATH -->
+    <ADD_TO_PATH_DEFAULT>1</ADD_TO_PATH_DEFAULT>
+    <ADD_TO_PATH_POSITION>end</ADD_TO_PATH_POSITION>
+
+    <!-- Windows Post-Installation Message -->
+    <WINDOWS_POST_INSTALL_TITLE>Installation Complete</WINDOWS_POST_INSTALL_TITLE>
+    <WINDOWS_POST_INSTALL_MESSAGE>The Installation Wizard has finished installing:
+${PRODUCT_NAME} ${PRODUCT_VERSION} on your computer.
+
+You can now launch ${PRODUCT_NAME} from the Start Menu or Desktop shortcut.
+</WINDOWS_POST_INSTALL_MESSAGE>
+
+</variables>

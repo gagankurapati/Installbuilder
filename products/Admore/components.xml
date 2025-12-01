@@ -1,0 +1,149 @@
+<!-- ADMORE 2024.0 Components (Based on Legacy Linux XML, extended for Windows) -->
+
+<!-- ============================================================================ -->
+<!-- =                        FLEXNET COMPONENT                                  = -->
+<!-- ============================================================================ -->
+
+<component>
+    <name>flex</name>
+    <description>${FLEX_COMPONENT_DESCRIPTION}</description>
+    <canBeEdited>1</canBeEdited>
+    <detailedDescription>${FLEX_COMPONENT_DETAILED}</detailedDescription>
+    <selected>1</selected>
+    <show>1</show>
+    <folderList>
+
+        <!-- ======================================== -->
+        <!-- =        LINUX-SPECIFIC FILES          = -->
+        <!-- ======================================== -->
+        <!-- From Legacy: FLEXnet Runtime Files -->
+
+        <folder>
+            <description>FlexNet Runtimes Files</description>
+            <destination>${installdir}</destination>
+            <name>programfilesflexnet</name>
+            <platforms>linux-x64</platforms>
+            <distributionFileList>
+                <distributionDirectory allowWildcards="1">
+                    <origin>${FLEXNETRUNTIME}/*</origin>
+                </distributionDirectory>
+                <distributionDirectory>
+                    <origin>${MASTERPATH}/Paminst-gui.sh</origin>
+                </distributionDirectory>
+                <distributionDirectory>
+                    <origin>${MASTERPATH}/pamcust.sh</origin>
+                </distributionDirectory>
+                <distributionDirectory>
+                    <origin>${MASTERPATH}/auxsh.tar</origin>
+                </distributionDirectory>
+                <distributionDirectory>
+                    <origin>${MASTERPATH}/getppgdir.sh</origin>
+                </distributionDirectory>
+                <distributionDirectory allowWildcards="1">
+                    <origin>${MASTERPATH}/install_lic.*</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+        <!-- From Legacy: FLEXnet Scripts (Linux) -->
+        <folder>
+            <description>FLEXnet Scripts</description>
+            <destination>${installdir}/scripts</destination>
+            <name>flexscripts</name>
+            <platforms>linux-x64</platforms>
+            <distributionFileList>
+                <distributionDirectory allowWildcards="1">
+                    <origin>${MASTERPATH}/scripts/*</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+        <!-- ======================================== -->
+        <!-- =       WINDOWS-SPECIFIC FILES         = -->
+        <!-- ======================================== -->
+        <!-- Windows FLEXnet Support (Future) -->
+
+        <folder>
+            <description>FlexNet Runtimes Files (Windows)</description>
+            <destination>${installdir}</destination>
+            <name>programfilesflexnetwin</name>
+            <platforms>windows</platforms>
+            <distributionFileList>
+                <distributionDirectory allowWildcards="1">
+                    <origin>${FLEXNETRUNTIME}/*</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+    </folderList>
+</component>
+
+<!-- ============================================================================ -->
+<!-- =                        DEFAULT/MAIN COMPONENT                            = -->
+<!-- ============================================================================ -->
+
+<component>
+    <name>default</name>
+    <description>${MAIN_COMPONENT_DESCRIPTION}</description>
+    <canBeEdited>1</canBeEdited>
+    <detailedDescription>${MAIN_COMPONENT_DETAILED}</detailedDescription>
+    <selected>1</selected>
+    <show>1</show>
+
+    <folderList>
+
+        <!-- ======================================== -->
+        <!-- =        LINUX-SPECIFIC FILES          = -->
+        <!-- ======================================== -->
+        <!-- From Legacy: Program Files for Linux x64 -->
+
+        <folder>
+            <description>Program Files (Linux)</description>
+            <destination>${installdir}</destination>
+            <name>programfileslinux64</name>
+            <platforms>linux-x64</platforms>
+            <distributionFileList>
+                <!-- Main package files (from legacy) -->
+                <distributionDirectory allowWildcards="1">
+                    <origin>${BUILDSPACE}/${PACKAGE}/*</origin>
+                </distributionDirectory>
+
+                <!-- Master path files (from legacy - excluding EULA, install_lic, Paminst-gui.sh, auxsh.tar) -->
+                <distributionDirectory allowWildcards="1">
+                    <excludeFiles>*/EULA.*;*/install_lic.*;*/Paminst-gui.sh;*/auxsh.tar</excludeFiles>
+                    <origin>${MASTERPATH}/*</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+        <!-- ======================================== -->
+        <!-- =       WINDOWS-SPECIFIC FILES         = -->
+        <!-- ======================================== -->
+        <!-- Windows Program Files (Future Support) -->
+
+        <folder>
+            <description>Program Files (Windows)</description>
+            <destination>${installdir}</destination>
+            <name>programfileswindows</name>
+            <platforms>windows</platforms>
+            <distributionFileList>
+                <!-- Main package files -->
+                <distributionDirectory allowWildcards="1">
+                    <origin>${BUILDSPACE}/${PACKAGE}/*</origin>
+                </distributionDirectory>
+
+                <!-- Master path files (excluding EULA) -->
+                <distributionDirectory allowWildcards="1">
+                    <excludeFiles>*/EULA.*</excludeFiles>
+                    <origin>${MASTERPATH}/*</origin>
+                </distributionDirectory>
+            </distributionFileList>
+        </folder>
+
+    </folderList>
+
+    <!-- Include shortcuts from external file -->
+    <shortcutList>
+        <include>${SHORTCUTS_FILE}</include>
+    </shortcutList>
+</component>

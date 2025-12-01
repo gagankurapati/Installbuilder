@@ -10,6 +10,11 @@
     <vendor>${VENDOR_NAME}</vendor>
     <description>${PRODUCT_DESCRIPTION}</description>
 
+    <!-- Branding Images (Legacy ADMORE Pattern) -->
+    <leftImage>${LEFT_IMAGE}</leftImage>
+    <logoImage>${LOGO_IMAGE}</logoImage>
+    <wmImage>${WM_IMAGE}</wmImage>
+
     <!-- Installation Directory -->
     <defaultInstallationDirectory>${DEFAULT_INSTALL_DIR}</defaultInstallationDirectory>
 
@@ -31,6 +36,20 @@
     <enabledPlatforms>
         <platform>${ENABLED_PLATFORMS}</platform>
     </enabledPlatforms>
+
+    <!-- Pre-Build Actions (Legacy Pattern) -->
+    <!-- Set variables from command-line parameters -->
+    <preBuildActionList>
+        <actionGroup>
+            <actionList>
+                <setInstallerVariable name="BUILDSPACE" value="${clbuildspace}"/>
+                <setInstallerVariable name="PACKAGE" value="${clpackage}"/>
+                <setInstallerVariable name="MASTERPATH" value="${clmasterpath}"/>
+                <setInstallerVariable name="PRODUCTCONFIGPATH" value="${clproductconfigpath}"/>
+                <setInstallerVariable name="FLEXNETRUNTIME" value="${clflexnetruntimepath}"/>
+            </actionList>
+        </actionGroup>
+    </preBuildActionList>
 
     <!-- Component List -->
     <!-- Components are loaded from external file specified in ${COMPONENTS_FILE} variable -->
@@ -142,6 +161,46 @@ Available aliases:
                 </isTrue>
             </ruleList>
         </actionGroup>
+
+        <!-- VERSION File Management (Legacy ADMORE Pattern) -->
+        <!-- Allows multiple products to coexist in same installation directory -->
+        <actionGroup>
+            <actionList>
+                <!-- Remove any existing entry for this product/version -->
+                <substitute>
+                    <files>${VERSION_FILE_PATH}</files>
+                    <type>exact</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern>${VERSION_FILE_ENTRY}&#xA;</pattern>
+                            <value></value>
+                        </substitution>
+                    </substitutionList>
+                    <ruleList>
+                        <fileTest>
+                            <condition>exists</condition>
+                            <path>${VERSION_FILE_PATH}</path>
+                        </fileTest>
+                    </ruleList>
+                </substitute>
+                <!-- Add current product/version entry -->
+                <addTextToFile>
+                    <file>${VERSION_FILE_PATH}</file>
+                    <text>${VERSION_FILE_ENTRY}
+</text>
+                    <append>1</append>
+                </addTextToFile>
+                <!-- Clean up rollback directory after successful install -->
+                <deleteFile>
+                    <path>${project.rollbackBackupDirectory}</path>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <isTrue>
+                    <value>${ENABLE_VERSION_FILE}</value>
+                </isTrue>
+            </ruleList>
+        </actionGroup>
     </postInstallationActionList>
 
     <!-- Uninstaller Actions -->
@@ -177,6 +236,49 @@ Available aliases:
             </ruleList>
         </actionGroup>
     </preUninstallationActionList>
+
+    <!-- Post-Uninstall Actions -->
+    <postUninstallationActionList>
+        <!-- VERSION File Cleanup (Legacy ADMORE Pattern) -->
+        <actionGroup>
+            <actionList>
+                <!-- Remove this product's entry from VERSION file -->
+                <substitute>
+                    <files>${VERSION_FILE_PATH}</files>
+                    <type>exact</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern>${VERSION_FILE_ENTRY}&#xA;</pattern>
+                            <value></value>
+                        </substitution>
+                    </substitutionList>
+                    <ruleList>
+                        <fileTest>
+                            <condition>exists</condition>
+                            <path>${VERSION_FILE_PATH}</path>
+                        </fileTest>
+                    </ruleList>
+                </substitute>
+                <!-- Delete VERSION file if it's now empty -->
+                <deleteFile>
+                    <path>${VERSION_FILE_PATH}</path>
+                    <ruleList>
+                        <fileContentTest>
+                            <logic>does_not_contain</logic>
+                            <path>${VERSION_FILE_PATH}</path>
+                            <text>
+</text>
+                        </fileContentTest>
+                    </ruleList>
+                </deleteFile>
+            </actionList>
+            <ruleList>
+                <isTrue>
+                    <value>${ENABLE_VERSION_FILE}</value>
+                </isTrue>
+            </ruleList>
+        </actionGroup>
+    </postUninstallationActionList>
 
     <!-- Parameter List for Installation Wizard -->
     <parameterList>
@@ -291,6 +393,9 @@ Available aliases:
     <languageList>
         <language>en</language>
     </languageList>
+
+    <!-- Uninstaller Directory (Legacy ADMORE Pattern) -->
+    <uninstallerDirectory>${UNINSTALLER_DIR}</uninstallerDirectory>
 
     <!-- Unattended/Silent Installation Support -->
     <allowedModes>gtk qt text unattended</allowedModes>
@@ -986,53 +1091,12 @@ Click Finish to exit the Setup Wizard.</explanation>
             <allowBack>0</allowBack>
             <allowCancel>0</allowCancel>
             <postShowPageActionList>
-                <!-- Post-installation steps window for Linux -->
+                <!-- Post-installation steps window for Linux (Legacy ADMORE Pattern) -->
                 <actionGroup>
                     <actionList>
                         <showInfo>
-                            <title>Post-Installation Steps</title>
-                            <text>Post-Installation Steps for ${PRODUCT_NAME}
-========================================
-
-Installation completed successfully!
-
-Installation Location:
-${installdir}
-
-Next Steps:
------------
-
-1. Environment Setup (Optional):
-   To use ${PRODUCT_NAME} from any terminal, add the following to your shell profile:
-
-   For bash (~/.bashrc):
-   export PATH="${installdir}/bin:$PATH"
-
-   For zsh (~/.zshrc):
-   export PATH="${installdir}/bin:$PATH"
-
-   Then restart your terminal or run:
-   source ~/.bashrc  # or source ~/.zshrc
-
-2. Verify Installation:
-   Run the following command to verify installation:
-   ${installdir}/bin/${PRODUCT_SHORT_NAME} --version
-
-3. Documentation:
-   View documentation at:
-   ${installdir}/docs/
-
-4. Getting Started:
-   Launch ${PRODUCT_NAME} by running:
-   ${installdir}/bin/${PRODUCT_SHORT_NAME}
-
-5. Uninstall:
-   To uninstall ${PRODUCT_NAME}, run:
-   ${installdir}/uninstall
-
-For more information, visit the documentation or contact support.
-
-Thank you for installing ${PRODUCT_NAME}!</text>
+                            <title>${LINUX_POST_INSTALL_TITLE}</title>
+                            <text>${LINUX_POST_INSTALL_MESSAGE}</text>
                         </showInfo>
                     </actionList>
                     <ruleList>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ADMORE 2024.0 Shortcuts -->
+<shortcutList>
+
+<!-- ============================================================================ -->
+<!-- =                         LINUX SHORTCUTS                                  = -->
+<!-- ============================================================================ -->
+<!-- Legacy XML explicitly had NO desktop shortcuts for Linux.
+     Keeping this section empty to match legacy behavior. -->
+
+<!-- No Linux shortcuts -->
+
+
+<!-- ============================================================================ -->
+<!-- =                        WINDOWS SHORTCUTS                                 = -->
+<!-- ============================================================================ -->
+
+<!-- Windows Main Application -->
+<shortcut>
+    <comment>Launch ${PRODUCT_NAME}</comment>
+    <exec>${installdir}/bin/${WINDOWS_EXECUTABLE}</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>${PRODUCT_SHORT_NAME}</name>
+    <path>${installdir}</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/bin/${WINDOWS_EXECUTABLE}</windowsExec>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+    <windowsCreateDesktopIcon>${CREATE_DESKTOP_SHORTCUTS}</windowsCreateDesktopIcon>
+</shortcut>
+
+<!-- Windows Uninstaller -->
+<shortcut>
+    <comment>Uninstall ${PRODUCT_NAME}</comment>
+    <exec>${installdir}/Uninstall_ESI_Products/${UNINSTALLER_NAME}.exe</exec>
+    <icon>${installdir}/${WINDOWS_ICON}</icon>
+    <name>Uninstall ${PRODUCT_SHORT_NAME}</name>
+    <path>${installdir}</path>
+    <platforms>windows</platforms>
+    <runInTerminal>0</runInTerminal>
+    <windowsExec>${installdir}/Uninstall_ESI_Products/${UNINSTALLER_NAME}.exe</windowsExec>
+    <windowsIcon>${installdir}/${WINDOWS_ICON}</windowsIcon>
+    <windowsPath>${installdir}</windowsPath>
+    <programGroupAllUsers>1</programGroupAllUsers>
+    <programGroupName>${WINDOWS_START_MENU_FOLDER}</programGroupName>
+</shortcut>
+
+</shortcutList>
