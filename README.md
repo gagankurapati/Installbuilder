@@ -6,6 +6,7 @@ A modular XML-based framework for building cross-platform installers using Insta
 
 ## Table of Contents
 
+- [Requirements Checklist](#requirements-checklist) ⭐
 - [Architecture](#architecture)
 - [How It Works](#how-it-works)
 - [Build Command](#build-command)
@@ -15,6 +16,40 @@ A modular XML-based framework for building cross-platform installers using Insta
 - [Validation](#validation)
 - [Current Products](#current-products)
 - [Silent/Unattended Installation](#silentunattended-installation)
+
+---
+
+## Requirements Checklist
+
+**🎯 New to InstallBuilder? Start here!**
+
+See **[REQUIREMENTS_CHECKLIST.md](REQUIREMENTS_CHECKLIST.md)** for a complete checklist of everything you need to provide to build installers:
+
+- ✅ Product information (name, version, vendor)
+- ✅ Application binaries (Windows .exe, Linux executables)
+- ✅ Legal documents (LICENSE.txt, EULA)
+- ✅ Icons and graphics (.ico, .png, splash screen)
+- ✅ Component definitions (what files to install)
+- ✅ Configuration decisions (install directory, shortcuts, PATH)
+
+**Quick Start:**
+```bash
+# 1. Check the requirements
+cat REQUIREMENTS_CHECKLIST.md
+
+# 2. Copy the template
+cp variables-template.xml products/my-product/variables.xml
+
+# 3. Customize for your app
+# Edit: products/my-product/variables.xml
+#       products/my-product/components.xml
+#       products/my-product/shortcuts.xml
+
+# 4. Build installer
+builder build installer-template.xml \
+    --setvars project_directory=$(pwd) \
+    --setvars variablesFile=$(pwd)/products/my-product/variables.xml
+```
 
 ---
 
