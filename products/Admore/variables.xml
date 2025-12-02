@@ -133,25 +133,21 @@
     <LINUX_CUSTOMIZATION_SCRIPT>pamcust.sh</LINUX_CUSTOMIZATION_SCRIPT>
     <LINUX_LICENSE_INSTALL_SCRIPT>Paminst-gui.sh</LINUX_LICENSE_INSTALL_SCRIPT>
 
-    <!-- Linux Post-Installation Message (From Legacy) -->
-    <LINUX_POST_INSTALL_TITLE>Post-Installation Steps</LINUX_POST_INSTALL_TITLE>
-    <LINUX_POST_INSTALL_MESSAGE>The Installation Wizard has finished installing:
-${PRODUCT_NAME} ${PRODUCT_VERSION} on your computer
-and will now exit.
-You will then be able to customize your environment and/or
-install your license, using the supplied scripts.
+    <!-- Linux Post-Installation Message (Modernized) -->
+    <LINUX_POST_INSTALL_TITLE>Installation Complete</LINUX_POST_INSTALL_TITLE>
+    <LINUX_POST_INSTALL_MESSAGE>${PRODUCT_NAME} ${PRODUCT_VERSION} has been successfully installed.
 
-To customize your environment using pamcust.sh
-execute these commands:
-    1. cd ${installdir}
-    2. ./pamcust.sh
-    3. follow the prompts
+Environment Configuration:
+  ✓ PAMHOME automatically configured in ~/.bashrc
+  ✓ Shell aliases added (run 'source ~/.bashrc' to activate)
 
-To install your license using Paminst-gui.sh
-execute these commands:
-    1. cd ${installdir}
-    2. ./Paminst-gui.sh lic
-    3. follow the prompts
+Next Step - License Installation:
+To install your FLEXnet license, run:
+    cd ${installdir}
+    ./Paminst-gui.sh lic
+
+Then restart your terminal or run:
+    source ~/.bashrc
 </LINUX_POST_INSTALL_MESSAGE>
 
     <!-- ============================================================================ -->

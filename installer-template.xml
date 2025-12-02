@@ -108,6 +108,54 @@
             </ruleList>
         </actionGroup>
 
+        <!-- Linux Environment Setup (Automatic PAMHOME configuration) -->
+        <actionGroup>
+            <actionList>
+                <!-- Remove old PAMHOME configuration if exists -->
+                <substitute>
+                    <files>${system.home}/.bashrc</files>
+                    <type>regexp</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern># ${PRODUCT_NAME} Environment.*# End ${PRODUCT_NAME} Environment</pattern>
+                            <value></value>
+                        </substitution>
+                    </substitutionList>
+                    <ruleList>
+                        <fileTest>
+                            <condition>exists</condition>
+                            <path>${system.home}/.bashrc</path>
+                        </fileTest>
+                    </ruleList>
+                </substitute>
+                <!-- Add PAMHOME environment to .bashrc -->
+                <addTextToFile>
+                    <file>${system.home}/.bashrc</file>
+                    <text>
+# ${PRODUCT_NAME} Environment
+export PAMHOME=${installdir}
+export PAMENV=$PAMHOME/env-`uname`
+if [ -r $PAMENV/psi.Baenv ]; then
+    . $PAMENV/psi.Baenv
+fi
+# End ${PRODUCT_NAME} Environment
+</text>
+                    <append>1</append>
+                    <ruleList>
+                        <fileTest>
+                            <condition>exists</condition>
+                            <path>${system.home}/.bashrc</path>
+                        </fileTest>
+                    </ruleList>
+                </addTextToFile>
+            </actionList>
+            <ruleList>
+                <platformTest>
+                    <type>linux</type>
+                </platformTest>
+            </ruleList>
+        </actionGroup>
+
         <!-- Linux Aliases Installation -->
         <actionGroup>
             <actionList>
@@ -228,6 +276,40 @@ Available aliases:
                 <deleteFile>
                     <path>/usr/local/bin/${PRODUCT_SHORT_NAME}</path>
                 </deleteFile>
+                <!-- Remove PAMHOME environment from .bashrc -->
+                <substitute>
+                    <files>${system.home}/.bashrc</files>
+                    <type>regexp</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern># ${PRODUCT_NAME} Environment.*# End ${PRODUCT_NAME} Environment</pattern>
+                            <value></value>
+                        </substitution>
+                    </substitutionList>
+                    <ruleList>
+                        <fileTest>
+                            <condition>exists</condition>
+                            <path>${system.home}/.bashrc</path>
+                        </fileTest>
+                    </ruleList>
+                </substitute>
+                <!-- Remove aliases from .bash_aliases -->
+                <substitute>
+                    <files>${system.home}/.bash_aliases</files>
+                    <type>regexp</type>
+                    <substitutionList>
+                        <substitution>
+                            <pattern># ${PRODUCT_NAME} Aliases.*# End ${PRODUCT_NAME} Aliases</pattern>
+                            <value></value>
+                        </substitution>
+                    </substitutionList>
+                    <ruleList>
+                        <fileTest>
+                            <condition>exists</condition>
+                            <path>${system.home}/.bash_aliases</path>
+                        </fileTest>
+                    </ruleList>
+                </substitute>
             </actionList>
             <ruleList>
                 <platformTest>

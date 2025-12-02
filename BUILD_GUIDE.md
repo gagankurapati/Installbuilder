@@ -36,9 +36,10 @@ builder build installer-template.xml \
 
 ### 2. Master Path (`${clmasterpath}/`)
 - `EULA.txt`
-- `pamcust.sh`, `Paminst-gui.sh`
+- `Paminst-gui.sh` (license installation GUI)
 - `auxsh.tar`, `getppgdir.sh`, `install_lic.*`
 - `scripts/` directory
+- Note: `pamcust.sh` no longer needed (automatic setup)
 
 ### 3. Branding (`${clproductconfigpath}/Res/`)
 - `ADM_Banner.png`, `ADM_Splash.png`, `VIPlatform.png`
@@ -63,16 +64,19 @@ InstallBuilder/
 
 ---
 
-## ✅ Linux Features (Complete)
+## ✅ Linux Features (Modernized & Complete)
 
-- ✅ FLEXnet component with scripts (pamcust.sh, Paminst-gui.sh)
+- ✅ **Automatic PAMHOME setup** - No manual pamcust.sh needed
+- ✅ **Auto .bashrc modification** - Environment configured automatically
+- ✅ FLEXnet component with Paminst-gui.sh license tool
 - ✅ VERSION file management (multi-product support)
 - ✅ Branding images (4 types)
 - ✅ No desktop shortcuts (legacy pattern)
 - ✅ Component selection
-- ✅ Bash aliases support
+- ✅ Bash aliases support (automatic)
 - ✅ Silent installation
 - ✅ Uninstaller in `/Uninstall_ESI_Products/`
+- ✅ Clean uninstall (removes all config from .bashrc)
 
 ---
 
@@ -102,7 +106,9 @@ All ADMORE settings (product info, paths, branding, Linux/Windows separation)
 - [ ] Files in `/opt/ESIGroup/`
 - [ ] VERSION file created
 - [ ] Symlink: `/usr/local/bin/ADM`
-- [ ] Scripts: `pamcust.sh`, `Paminst-gui.sh` executable
+- [ ] PAMHOME in `~/.bashrc`
+- [ ] Aliases in `~/.bash_aliases`
+- [ ] Paminst-gui.sh executable
 
 ---
 
