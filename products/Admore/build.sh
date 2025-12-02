@@ -17,18 +17,26 @@ IBPROJECTVERSION=2024.0
 PRODUCT_NAME="ADMORE"
 PRODUCT_SHORT_NAME="ADM"
 
+# Build platform (linux-x64 or windows)
+PLATFORM="${1:-linux-x64}"
+
 # Build Paths - UPDATE THESE FOR YOUR ENVIRONMENT
 IBOUTPUTDIR=/nisprod/packaging/builds/ppg/IBRelease/${PRODUCT_NAME}
 APROOTDIR=/nisprod/packaging/builds/ppg/IBAppPackages
-APROOTNAME=ADMORE2024r0_Linux
-COMMONROOT=/nisprod/packaging/builds/ppg/IBProjects/00_COMMON_FILES/Content
-FLEXNETROOT=/nisprod/packaging/builds/ppg/IBProjects/00_COMMON_FILES/FLEXnet
+
+# Platform-specific paths
+if [[ "${PLATFORM}" == "windows" ]]; then
+    APROOTNAME=ADMORE2024r0_Windows
+    COMMONROOT=/nisprod/packaging/builds/ppg/IBProjects/00_COMMON_FILES_WIN/Content
+    FLEXNETROOT=/nisprod/packaging/builds/ppg/IBProjects/00_COMMON_FILES_WIN/FLEXnet
+else
+    APROOTNAME=ADMORE2024r0_Linux
+    COMMONROOT=/nisprod/packaging/builds/ppg/IBProjects/00_COMMON_FILES/Content
+    FLEXNETROOT=/nisprod/packaging/builds/ppg/IBProjects/00_COMMON_FILES/FLEXnet
+fi
 
 # Log file
-IBLOGFILE="${PRODUCT_DIR}/build_${FORMAT_DATE}.log"
-
-# Build platform (linux-x64 or windows)
-PLATFORM="${1:-linux-x64}"
+IBLOGFILE="${PRODUCT_DIR}/build_${PLATFORM}_${FORMAT_DATE}.log"
 
 echo "========================================"
 echo "${PRODUCT_NAME} InstallBuilder Build"
